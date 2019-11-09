@@ -22,16 +22,18 @@ namespace UnitTestTask1
         [TestMethod]
         public void TestMethodGcdEuclid()
         {
+            double time;
             int a, b, c, d, e, gcd;
             for(int i = 0; i < 100; i++)
             {
+                time = 0;
                 a = rand.Next(-1000, 1001);
                 b = rand.Next(-1000, 1001);
                 c = rand.Next(-1000, 1001);
                 d = rand.Next(-1000, 1001);
                 e = rand.Next(-1000, 1001);
 
-                gcd = NOD.findGcdEuclid(a, b, c, d, e);
+                gcd = NOD.findGcdEuclid(a, b, c, d, e, ref time);
 
                 Assert.IsTrue(CheckResult(gcd, a, b, c, d, e));
             }
@@ -40,13 +42,15 @@ namespace UnitTestTask1
         [TestMethod]
         public void TestMethodGcdEuclidTwoNumbers()
         {
+            double time;
             int a, b, gcd;
             for (int i = 0; i < 100; i++)
             {
+                time = 0;
                 a = rand.Next(-1000, 1001);
                 b = rand.Next(-1000, 1001);
 
-                gcd = NOD.findGcdEuclid(a, b);
+                gcd = NOD.findGcdEuclid(a, b, ref time);
 
                 Assert.IsTrue(CheckResult(gcd, a, b));
             }
@@ -55,10 +59,11 @@ namespace UnitTestTask1
         [TestMethod]
         public void TestMethodGcdStein()
         {
-            double time = 0;
+            double time;
             int a, b, gcd;
             for (int i = 0; i < 100; i++)
             {
+                time = 0;
                 a = rand.Next(-1000, 1001);
                 b = rand.Next(-1000, 1001);
 

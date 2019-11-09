@@ -13,6 +13,7 @@ namespace NODLibrary
     /// </summary>
     public static class NOD
     {
+        static Stopwatch stopWatch = new Stopwatch();
 
         /// <summary>
         /// Метод нахождения НОД алгоритмом Евклида
@@ -20,10 +21,11 @@ namespace NODLibrary
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int findGcdEuclid(int a, int b)
+        public static int findGcdEuclid(int a, int b, ref double time)
         {
-            a = a >= 0 ? a : -a;
-            b = b >= 0 ? b : -b;
+            stopWatch.Start();
+            a = Math.Abs(a);
+            b = Math.Abs(b);
             while (a != 0 && b != 0)
             {
                 if(a > b)
@@ -35,7 +37,8 @@ namespace NODLibrary
                     b = b % a;
                 }
             }
-
+            stopWatch.Stop();
+            time += stopWatch.Elapsed.TotalMilliseconds;
             return (a + b);
         }
 
@@ -46,9 +49,14 @@ namespace NODLibrary
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static int findGcdEuclid(int a, int b, int c)
+        public static int findGcdEuclid(int a, int b, int c, ref double time)
         {
-            return findGcdEuclid(findGcdEuclid(a, b), c);
+            int gcd;
+            stopWatch.Start();
+            gcd = findGcdEuclid(findGcdEuclid(a, b, ref time), c, ref time);
+            stopWatch.Stop();
+            time += stopWatch.Elapsed.TotalMilliseconds;
+            return gcd;
         }
 
         /// <summary>
@@ -59,9 +67,14 @@ namespace NODLibrary
         /// <param name="c"></param>
         /// <param name="d"></param>
         /// <returns></returns>
-        public static int findGcdEuclid(int a, int b, int c, int d)
+        public static int findGcdEuclid(int a, int b, int c, int d, ref double time)
         {
-            return findGcdEuclid(findGcdEuclid(a, b, c), d);
+            int gcd;
+            stopWatch.Start();
+            gcd = findGcdEuclid(findGcdEuclid(a, b, c, ref time), d, ref time);
+            stopWatch.Stop();
+            time += stopWatch.Elapsed.TotalMilliseconds;
+            return gcd;
         }
 
         /// <summary>
@@ -73,9 +86,14 @@ namespace NODLibrary
         /// <param name="d"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        public static int findGcdEuclid(int a, int b, int c, int d, int e)
+        public static int findGcdEuclid(int a, int b, int c, int d, int e, ref double time)
         {
-            return findGcdEuclid(findGcdEuclid(a, b, c, d), e);
+            int gcd;
+            stopWatch.Start();
+            gcd = findGcdEuclid(findGcdEuclid(a, b, c, d, ref time), e, ref time);
+            stopWatch.Stop();
+            time += stopWatch.Elapsed.TotalMilliseconds;
+            return gcd;
         }
 
         /// <summary>
@@ -87,7 +105,6 @@ namespace NODLibrary
         /// <returns></returns>
         public static int findGcdStein(int a, int b, ref double time)
         {
-            Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             if (a == 0)
             {
