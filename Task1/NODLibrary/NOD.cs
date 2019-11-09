@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
 
 namespace NODLibrary
 {
@@ -11,6 +13,7 @@ namespace NODLibrary
     /// </summary>
     public static class NOD
     {
+
         /// <summary>
         /// Метод нахождения НОД алгоритмом Евклида
         /// </summary>
@@ -19,7 +22,9 @@ namespace NODLibrary
         /// <returns></returns>
         public static int findGcdEuclid(int a, int b)
         {
-            while(a != 0 && b != 0)
+            a = a >= 0 ? a : -a;
+            b = b >= 0 ? b : -b;
+            while (a != 0 && b != 0)
             {
                 if(a > b)
                 {
@@ -71,6 +76,60 @@ namespace NODLibrary
         public static int findGcdEuclid(int a, int b, int c, int d, int e)
         {
             return findGcdEuclid(findGcdEuclid(a, b, c, d), e);
+        }
+
+        /// <summary>
+        /// Метод нахождения НОД алгоритмом Стейна
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="time">Время выполнения метода</param>
+        /// <returns></returns>
+        public static int findGcdStein(int a, int b, ref double time)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            if (a == 0)
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return b;
+            }                            
+            if (b == 0)
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return a;
+            }                         
+            if (a == b)
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return a;
+            }                      
+            if (a == 1 || b == 1)
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return 1;
+            }                  
+            if ((a & 1) == 0)
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return ((b & 1) == 0)
+                    ? findGcdStein(a >> 1, b >> 1, ref time) << 1
+                    : findGcdStein(a >> 1, b, ref time);
+            }                     
+                              
+            else
+            {
+                stopWatch.Stop();
+                time += stopWatch.Elapsed.TotalMilliseconds;
+                return ((b & 1) == 0)
+                    ? findGcdStein(a, b >> 1, ref time)
+                    : findGcdStein(b, a > b ? a - b : b - a, ref time);
+            }     
         }
     }
 }

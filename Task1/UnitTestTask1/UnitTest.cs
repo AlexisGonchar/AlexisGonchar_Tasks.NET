@@ -7,60 +7,65 @@ namespace UnitTestTask1
     [TestClass]
     public class UnitTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        Random rand = new Random();
+
+        private bool CheckResult(int gcd, params int[] numbers)
         {
-            int a = 30,
-                b = 18,
-                expGcd = 6,
-                actualGcd = NOD.findGcdEuclid(a, b);
-            Assert.AreEqual(expGcd, actualGcd);
+            foreach(int number in numbers)
+            {
+                if (number % gcd != 0)
+                    return false;
+            }
+            return true;
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void TestMethodGcdEuclid()
         {
-            int a = 1071,
-                b = 462,
-                expGcd = 21,
-                actualGcd = NOD.findGcdEuclid(a, b);
-            Assert.AreEqual(expGcd, actualGcd);
+            int a, b, c, d, e, gcd;
+            for(int i = 0; i < 100; i++)
+            {
+                a = rand.Next(-1000, 1001);
+                b = rand.Next(-1000, 1001);
+                c = rand.Next(-1000, 1001);
+                d = rand.Next(-1000, 1001);
+                e = rand.Next(-1000, 1001);
+
+                gcd = NOD.findGcdEuclid(a, b, c, d, e);
+
+                Assert.IsTrue(CheckResult(gcd, a, b, c, d, e));
+            }
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void TestMethodGcdEuclidTwoNumbers()
         {
-            int a = 624,
-                b = 1364,
-                c = 836,
-                expGcd = 4,
-                actualGcd = NOD.findGcdEuclid(a, b, c);
-            Assert.AreEqual(expGcd, actualGcd);
+            int a, b, gcd;
+            for (int i = 0; i < 100; i++)
+            {
+                a = rand.Next(-1000, 1001);
+                b = rand.Next(-1000, 1001);
+
+                gcd = NOD.findGcdEuclid(a, b);
+
+                Assert.IsTrue(CheckResult(gcd, a, b));
+            }
         }
 
         [TestMethod]
-        public void TestMethod4()
+        public void TestMethodGcdStein()
         {
-            int a = 624,
-                b = 1364,
-                c = 836,
-                e = 12,
-                expGcd = 4,
-                actualGcd = NOD.findGcdEuclid(a, b, c, e);
-            Assert.AreEqual(expGcd, actualGcd);
-        }
+            double time = 0;
+            int a, b, gcd;
+            for (int i = 0; i < 100; i++)
+            {
+                a = rand.Next(-1000, 1001);
+                b = rand.Next(-1000, 1001);
 
-        [TestMethod]
-        public void TestMethod5()
-        {
-            int a = 624,
-                b = 1364,
-                c = 836,
-                e = 12,
-                d = 24,
-                expGcd = 4,
-                actualGcd = NOD.findGcdEuclid(a, b, c, e, d);
-            Assert.AreEqual(expGcd, actualGcd);
+                gcd = NOD.findGcdStein(a, b, ref time);
+
+                Assert.IsTrue(CheckResult(gcd, a, b));
+            }
         }
     }
 }
