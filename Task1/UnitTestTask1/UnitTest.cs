@@ -26,5 +26,41 @@ namespace UnitTestTask1
                 actualGcd = NOD.findGcdEuclid(a, b);
             Assert.AreEqual(expGcd, actualGcd);
         }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            int a = 624,
+                b = 1364,
+                c = 836,
+                expGcd = 4,
+                actualGcd = NOD.findGcdEuclid(a, b, c);
+            Assert.AreEqual(expGcd, actualGcd);
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            int a = 624,
+                b = 1364,
+                c = 836,
+                e = 12,
+                expGcd = 4,
+                actualGcd = NOD.findGcdEuclid(a, b, c, e);
+            Assert.AreEqual(expGcd, actualGcd);
+        }
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            int a = 624,
+                b = 1364,
+                c = 836,
+                e = 12,
+                d = 24,
+                expGcd = 4,
+                actualGcd = NOD.findGcdEuclid(a, b, c, e, d);
+            Assert.AreEqual(expGcd, actualGcd);
+        }
     }
 }
