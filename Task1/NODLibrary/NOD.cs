@@ -20,6 +20,7 @@ namespace NODLibrary
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
+        /// <param name="time">Время выполнения метода</param>
         /// <returns></returns>
         public static int findGcdEuclid(int a, int b, ref double time)
         {
@@ -48,6 +49,7 @@ namespace NODLibrary
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="c"></param>
+        /// <param name="time">Время выполнения метода</param>
         /// <returns></returns>
         public static int findGcdEuclid(int a, int b, int c, ref double time)
         {
@@ -66,6 +68,7 @@ namespace NODLibrary
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <param name="d"></param>
+        /// <param name="time">Время выполнения метода</param>
         /// <returns></returns>
         public static int findGcdEuclid(int a, int b, int c, int d, ref double time)
         {
@@ -85,6 +88,7 @@ namespace NODLibrary
         /// <param name="c"></param>
         /// <param name="d"></param>
         /// <param name="e"></param>
+        /// <param name="time">Время выполнения метода</param>
         /// <returns></returns>
         public static int findGcdEuclid(int a, int b, int c, int d, int e, ref double time)
         {
@@ -147,6 +151,25 @@ namespace NODLibrary
                     ? findGcdStein(a, b >> 1, ref time)
                     : findGcdStein(b, a > b ? a - b : b - a, ref time);
             }     
+        }
+
+        /// <summary>
+        /// Метод, подготавливающий данные для построения гистограммы, 
+        /// сравнивающей время нахождения решения каждым из методов
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>Данные для гистограммы</returns>
+        public static Dictionary<string, double> getData(int a, int b)
+        {
+            Dictionary<string, double> data = new Dictionary<string, double>();
+            double time = 0;
+            findGcdEuclid(a, b, ref time);
+            data.Add("Eucliden algorithm", time);
+            time = 0;
+            findGcdStein(a, b, ref time);
+            data.Add("Stein's algorithm", time);
+            return data;
         }
     }
 }
