@@ -11,8 +11,17 @@ namespace MathLibrary
     /// </summary>
     public class Vector3
     {
+        /// <summary>
+        /// Ось X
+        /// </summary>
         public float X { get; protected set; }
+        /// <summary>
+        /// Ось Y
+        /// </summary>
         public float Y { get; protected set; }
+        /// <summary>
+        /// Ось Z
+        /// </summary>
         public float Z { get; protected set; }
 
         /// <summary>
