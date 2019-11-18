@@ -12,7 +12,7 @@ namespace MathLibrary
     public class Polynom
     {
         /// <summary>
-        /// Массив коэффициентов полинома
+        /// Массив коэффициентов полинома начиная с x^0
         /// </summary>
         public float[] Coeff { get; protected set; }
         /// <summary>
@@ -39,11 +39,14 @@ namespace MathLibrary
         /// <returns></returns>
         public static Polynom operator +(Polynom poly1, Polynom poly2)
         {
+            float a, b;
             int length = Math.Max(poly1.Degree + 1, poly2.Degree + 1);
             float[] coff = new float[length];
             for(int i = 0; i < length; i++)
             {
-                coff[i] = poly1.Coeff[i] + poly2.Coeff[i];
+                a = i < poly1.Coeff.Length ? poly1.Coeff[i] : 0;
+                b = i < poly2.Coeff.Length ? poly2.Coeff[i] : 0;
+                coff[i] = a + b;
             }
 
             return new Polynom(coff);
@@ -57,11 +60,14 @@ namespace MathLibrary
         /// <returns></returns>
         public static Polynom operator -(Polynom poly1, Polynom poly2)
         {
+            float a, b;
             int length = Math.Max(poly1.Degree + 1, poly2.Degree + 1);
             float[] coff = new float[length];
             for (int i = 0; i < length; i++)
             {
-                coff[i] = poly1.Coeff[i] - poly2.Coeff[i];
+                a = i < poly1.Coeff.Length ? poly1.Coeff[i] : 0;
+                b = i < poly2.Coeff.Length ? poly2.Coeff[i] : 0;
+                coff[i] = a - b;
             }
 
             return new Polynom(coff);
