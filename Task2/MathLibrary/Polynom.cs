@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 namespace MathLibrary
 {
     /// <summary>
-    /// Класс многочлен
+    /// Polynom class
     /// </summary>
     public class Polynom
     {
         /// <summary>
-        /// Массив коэффициентов полинома начиная с x^0
+        /// Array of polynomial coefficients starting at x^0
         /// </summary>
         public float[] Coeff { get; protected set; }
         /// <summary>
-        /// Степень полинома
+        /// Polynomial degree
         /// </summary>
         public int Degree { get; protected set; }
 
         /// <summary>
-        /// Конструктор класса
+        /// Constructor
         /// </summary>
         /// <param name="coeff"></param>
         public Polynom(params float[] coeff)
@@ -32,7 +32,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Метод нахождения суммы полиномов
+        /// Polynomial addition
         /// </summary>
         /// <param name="poly1"></param>
         /// <param name="poly2"></param>
@@ -53,7 +53,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Метод нахождения разницы полиномов
+        /// Polynomial subtraction
         /// </summary>
         /// <param name="poly1"></param>
         /// <param name="poly2"></param>
@@ -74,7 +74,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Метод нахождения произведения полиномов
+        /// Polynomial multiplication
         /// </summary>
         /// <param name="poly1"></param>
         /// <param name="poly2"></param>

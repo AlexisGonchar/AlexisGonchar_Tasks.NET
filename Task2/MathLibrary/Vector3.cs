@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 namespace MathLibrary
 {
     /// <summary>
-    /// Класс трехмерного вектора
+    /// Three-dimensional vector
     /// </summary>
     public class Vector3
     {
         /// <summary>
-        /// Ось X
+        /// Axle X
         /// </summary>
         public float X { get; protected set; }
         /// <summary>
-        /// Ось Y
+        /// Axle Y
         /// </summary>
         public float Y { get; protected set; }
         /// <summary>
-        /// Ось Z
+        /// Axle Z
         /// </summary>
         public float Z { get; protected set; }
 
         /// <summary>
-        /// Конструктор класса
+        /// Constructor
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -38,7 +38,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Сумма двух трехмерных векторов
+        /// Sum of two three-dimensional vectors
         /// </summary>
         /// <param name="vec1"></param>
         /// <param name="vec2"></param>
@@ -49,7 +49,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Разница двух трехмерных векторов
+        /// subtraction of two three-dimensional vectors
         /// </summary>
         /// <param name="vec1"></param>
         /// <param name="vec2"></param>
@@ -60,7 +60,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Произведение трехмерного вектора на число
+        /// Multiplication of a three-dimendional vector by a number
         /// </summary>
         /// <param name="vec"></param>
         /// <param name="num"></param>
@@ -71,7 +71,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Скалярное произведение двух терхмерных векторов
+        /// Scalar multiplication of two three-dimensional vectors
         /// </summary>
         /// <param name="vec1"></param>
         /// <param name="vec2"></param>
@@ -82,7 +82,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Векторное произведение двух трехмерных векторов
+        /// Vector multiplication of two three-dimensional vectors
         /// </summary>
         /// <param name="vec1"></param>
         /// <param name="vec2"></param>
