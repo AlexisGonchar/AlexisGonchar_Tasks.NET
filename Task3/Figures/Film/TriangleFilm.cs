@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
-    public class TriangleFilm : Rectangle, Film
+    public class TriangleFilm : Triangle, Film
     {
-        public TriangleFilm(double a, double b) : base(a, b)
+        public TriangleFilm(double a, double b, double c) : base(a, b, c)
         {
         }
     }

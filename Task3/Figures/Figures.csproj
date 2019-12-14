@@ -48,6 +48,7 @@
     <Compile Include="Film\Film.cs" />
     <Compile Include="Film\RectangleFilm.cs" />
     <Compile Include="Film\TriangleFilm.cs" />
+    <Compile Include="Paints.cs" />
     <Compile Include="Paper\CirclePaper.cs" />
     <Compile Include="Paper\Paper.cs" />
     <Compile Include="Paper\RectanglePaper.cs" />
@@ -59,10 +60,6 @@
     <ProjectReference Include="..\ExceptionsLib\ExceptionsLib.csproj">
       <Project>{cb87f975-9c41-4664-8b0a-2132aa29cd5e}</Project>
       <Name>ExceptionsLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Work-table\WorkTable.csproj">
-      <Project>{e630137c-d7ba-48a0-985e-65d267bc2a65}</Project>
-      <Name>WorkTable</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

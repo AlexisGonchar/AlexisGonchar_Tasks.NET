@@ -35,7 +35,7 @@ namespace ExceptionsLib
             {
                 get
                 {
-                    return "The figure is already painted over.";
+                    return "This figure cannot be painted.";
                 }
             }
         }

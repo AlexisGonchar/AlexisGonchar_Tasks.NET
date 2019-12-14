@@ -10,7 +10,7 @@ namespace Figures
     public abstract class Triangle : IFigure
     {
         private double[] sides;
-        public Triangle(int a, int b, int c)
+        public Triangle(double a, double b, double c)
         {
             if(!IsExist(a, b, c))
             {
@@ -19,7 +19,7 @@ namespace Figures
             sides = new double[] { a, b, c };
         }
 
-        private bool IsExist(int a, int b, int c)
+        private bool IsExist(double a, double b, double c)
         {
             return 
                 (a > 0) && (b > 0) && (c > 0) && (a + b > c) && (a + c > b) && (b + c > a);

@@ -4,14 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static ExceptionsLib.Exceptions;
-using WorkTable;
 
 namespace Figures
 {
+    /// <summary>
+    /// Triangle of paper class
+    /// </summary>
     public class TrianglePaper : Triangle, Paper
     {
         private Paints color;
-        public TrianglePaper(int a, int b, int c) : base(a, b, c)
+
+        /// <summary>
+        /// Constructor for crating triangle
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        public TrianglePaper(double a, double b, double c) : base(a, b, c)
         {
         }
 
