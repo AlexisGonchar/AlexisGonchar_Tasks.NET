@@ -8,76 +8,66 @@ using Figures;
 
 namespace WorkTable
 {
-
-    public enum Material
-    {
-        Paper,
-        Film
-    }
-
-    public class FiguresFactory
+    public class Shears
     {
         /// <summary>
-        /// Method for get circle
+        /// Method for cut circle
         /// </summary>
-        /// <param name="Material"></param>
+        /// <param name="figure"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float radius)
+        public IFigure CutFigure(IFigure figure, float radius)
         {
-            IFigure figure = CreateFigure(material, radius);
-            return figure;
+            IFigure newFigure = CreateFigure(figure, radius);
+            return newFigure;
         }
 
         /// <summary>
-        /// Method for get rectangle
+        /// ethod for cut rectangle
         /// </summary>
-        /// <param name="material"></param>
+        /// <param name="figure"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float a, float b)
+        public IFigure CutFigure(IFigure figure, float a, float b)
         {
-            IFigure figure = CreateFigure(material, a, b);
-            return figure;
+            IFigure newFigure = CreateFigure(figure, a, b);
+            return newFigure;
         }
 
         /// <summary>
-        /// Method for get triangle
+        /// Method for cut triangle
         /// </summary>
-        /// <param name="material"></param>
+        /// <param name="figure"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float a, float b, float c)
+        public IFigure GetFigure(IFigure figure, float a, float b, float c)
         {
-            IFigure figure = CreateFigure(material, a, b, c);
-            return figure;
+            IFigure newFigure = CreateFigure(figure, a, b, c);
+            return newFigure;
         }
 
-        private IFigure CreateFigure(Material material, params float[] values)
+        private IFigure CreateFigure(IFigure figure, params float[] values)
         {
-            IFigure figure = null;
-            switch (material)
-            {
-                case Material.Paper:
+            IFigure newFigure = null;
+            if(figure is Paper)
                     switch (values.Length)
                     {
                         case 1:
-                            figure = new CirclePaper(values[0]);
+                            figure = new CirclePaper(figure, values[0]);
                             break;
                         case 2:
-                            figure = new RectanglePaper(values[0], values[1]);
+                            figure = new RectanglePaper(figure, values[0], values[1]);
                             break;
                         case 3:
-                            figure = new TrianglePaper(values[0], values[1], values[2]);
+                            figure = new TrianglePaper(figure, values[0], values[1], values[2]);
                             break;
                         default:
                             throw new InvalidParametersException();
                     }
-                    break;
-                case Material.Film:
+            else if(figure is Film)
                     switch (values.Length)
                     {
                         case 1:
@@ -92,11 +82,7 @@ namespace WorkTable
                         default:
                             throw new InvalidParametersException();
                     }
-                    break;
-                default:
-                    throw new InvalidParametersException();
-            }
-            return figure;
+            return newFigure;
         }
     }
 }

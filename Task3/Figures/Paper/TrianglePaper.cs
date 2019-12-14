@@ -24,6 +24,15 @@ namespace Figures
         {
         }
 
+        public TrianglePaper(IFigure figure, double a, double b, double c) : base(figure, a, b, c)
+        {
+            if (!(figure is Paper))
+            {
+                throw new CutException();
+            }
+            this.color = ((Paper)figure).GetColor();
+        }
+
         public Paints GetColor()
         {
             return color;
@@ -36,6 +45,25 @@ namespace Figures
                 throw new ImpossibleToPaintException();
             }
             color = newColor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            TrianglePaper trianglePaper = obj as TrianglePaper;
+            if (trianglePaper == null)
+                return false;
+            return base.Equals(obj) && trianglePaper.GetColor() == GetColor();
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + 2 + GetColor().GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "; material = Paper; color = " + GetColor().ToString();
         }
     }
 }

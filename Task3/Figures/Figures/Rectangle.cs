@@ -20,6 +20,19 @@ namespace Figures
             sides = new double[] { a, b };
         }
 
+        public Rectangle(IFigure figure, double a, double b)
+        {
+            if (a <= 0 || b <= 0)
+            {
+                throw new InvalidParametersException();
+            }
+            sides = new double[] { a, b };
+            if (figure.GetSquare() < GetSquare())
+            {
+                throw new CutException();
+            }
+        }
+
         public double GetPerimeter()
         {
             return 2 * (sides[0] + sides[1]);
@@ -28,6 +41,27 @@ namespace Figures
         public double GetSquare()
         {
             return sides[0] * sides[1];
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Rectangle rectangle = obj as Rectangle;
+            if (rectangle == null)
+                return false;
+            return sides[0] == rectangle.sides[0] && sides[1] == rectangle.sides[1];
+        }
+
+        public override int GetHashCode()
+        {
+            return 5 * sides[0].GetHashCode() + 2 * sides[1].GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Triangle: sides: A = " + sides[0] + "; B = " + sides[1] +
+                   "; perimeter = " + GetPerimeter() + "; square = " + GetSquare();
         }
     }
 }

@@ -40,5 +40,18 @@ namespace ExceptionsLib
             }
         }
 
+        /// <summary>
+        /// Cannot to cutting the figure
+        /// </summary>
+        public class CutException : Exception
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "This figure cannot be cutting.";
+                }
+            }
+        }
     }
 }

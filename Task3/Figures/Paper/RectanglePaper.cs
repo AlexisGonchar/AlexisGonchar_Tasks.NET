@@ -14,6 +14,15 @@ namespace Figures
         {
         }
 
+        public RectanglePaper(IFigure figure, double a, double b) : base(figure, a, b)
+        {
+            if (!(figure is Paper))
+            {
+                throw new CutException();
+            }
+            this.color = ((Paper)figure).GetColor();
+        }
+
         public Paints GetColor()
         {
             return color;
@@ -26,6 +35,25 @@ namespace Figures
                 throw new ImpossibleToPaintException();
             }
             color = newColor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            RectanglePaper rectanglePaper = obj as RectanglePaper;
+            if (rectanglePaper == null)
+                return false;
+            return base.Equals(obj) && rectanglePaper.GetColor() == GetColor();
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + 2 + GetColor().GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "; material = Paper; color = " + GetColor().ToString();
         }
     }
 }

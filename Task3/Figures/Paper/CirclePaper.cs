@@ -15,6 +15,15 @@ namespace Figures
         {
         }
 
+        public CirclePaper(IFigure figure, double radius) : base(figure, radius)
+        {
+            if(!(figure is Paper))
+            {
+                throw new CutException();
+            }
+            this.color = ((Paper)figure).GetColor();
+        }
+
         public Paints GetColor()
         {
             return color;
@@ -27,6 +36,25 @@ namespace Figures
                 throw new ImpossibleToPaintException();
             }
             color = newColor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            CirclePaper circlePaper = obj as CirclePaper;
+            if (circlePaper == null)
+                return false;
+            return base.Equals(obj) && circlePaper.GetColor() == GetColor();
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + 2 + GetColor().GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "; material = Paper; color = " + GetColor().ToString();
         }
     }
 }
