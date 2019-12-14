@@ -43,6 +43,11 @@ namespace Figures
             return Math.PI * radius * radius;
         }
 
+        /// <summary>
+        /// Equals method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -53,11 +58,19 @@ namespace Figures
             return radius.Equals(circle.radius);
         }
 
+        /// <summary>
+        /// GetHashCode method
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return (3 * radius.GetHashCode());
         }
 
+        /// <summary>
+        /// ToString method
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "Circle: radius = " + radius + "; perimeter = " + GetPerimeter() + "; square = " + GetSquare();

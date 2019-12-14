@@ -54,6 +54,11 @@ namespace Figures
             return perimeter;
         }
 
+        /// <summary>
+        /// Equals method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -64,11 +69,19 @@ namespace Figures
             return sides[0] == triangle.sides[0] && sides[1] == triangle.sides[1] && sides[3] == triangle.sides[3];
         }
 
+        /// <summary>
+        /// GetHashCode method
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return 2 * sides[0].GetHashCode() + 3 * sides[1].GetHashCode() + 4 * sides[2].GetHashCode();
         }
 
+        /// <summary>
+        /// ToString method
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "Triangle: sides: A = " + sides[0] + "; B = " + sides[1] + "; C = " + sides[3] + 

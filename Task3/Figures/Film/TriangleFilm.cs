@@ -21,6 +21,11 @@ namespace Figures
             }
         }
 
+        /// <summary>
+        /// Equals method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -30,11 +35,20 @@ namespace Figures
                 return false;
             return base.Equals(obj);
         }
+
+        /// <summary>
+        /// GetHashCode method
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode() + 1;
         }
 
+        /// <summary>
+        /// ToString method
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString() + "; material = Film";

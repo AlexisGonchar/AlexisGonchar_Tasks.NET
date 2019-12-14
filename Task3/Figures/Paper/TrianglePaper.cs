@@ -47,6 +47,11 @@ namespace Figures
             color = newColor;
         }
 
+        /// <summary>
+        /// Equals method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -56,11 +61,20 @@ namespace Figures
                 return false;
             return base.Equals(obj) && trianglePaper.GetColor() == GetColor();
         }
+
+        /// <summary>
+        /// GetHashCode method
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode() + 2 + GetColor().GetHashCode();
         }
 
+        /// <summary>
+        /// ToString method
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString() + "; material = Paper; color = " + GetColor().ToString();

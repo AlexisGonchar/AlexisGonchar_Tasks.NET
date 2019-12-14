@@ -53,5 +53,33 @@ namespace ExceptionsLib
                 }
             }
         }
+
+        /// <summary>
+        /// Cannot to cutting the figure
+        /// </summary>
+        public class NoPlaceException : Exception
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "There is no more space in the box.";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Cannot to cutting the figure
+        /// </summary>
+        public class SameFigureException : Exception
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "There is no more space in the box.";
+                }
+            }
+        }
     }
 }
