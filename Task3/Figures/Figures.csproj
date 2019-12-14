@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Figures.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,11 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Figures\Circle.cs" />
     <Compile Include="Figures\IFigure.cs" />
+    <Compile Include="Figures\Rectangle.cs" />
+    <Compile Include="Film\CircleFilm.cs" />
+    <Compile Include="Film\Film.cs" />
+    <Compile Include="Film\RectangleFilm.cs" />
+    <Compile Include="Film\TriangleFilm.cs" />
+    <Compile Include="Paper\CirclePaper.cs" />
     <Compile Include="Paper\Paper.cs" />
+    <Compile Include="Paper\RectanglePaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Figures\Triangle.cs" />
     <Compile Include="Paper\TrianglePaper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExceptionsLib\ExceptionsLib.csproj">
+      <Project>{cb87f975-9c41-4664-8b0a-2132aa29cd5e}</Project>
+      <Name>ExceptionsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Work-table\WorkTable.csproj">
+      <Project>{e630137c-d7ba-48a0-985e-65d267bc2a65}</Project>
+      <Name>WorkTable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

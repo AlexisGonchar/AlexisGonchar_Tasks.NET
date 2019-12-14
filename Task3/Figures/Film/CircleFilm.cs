@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WorkTable;
 
 namespace Figures
 {
-    public interface Paper
+    public class CircleFilm : Circle, Film
     {
-        void Paint(Paints newColor);
-
-        Paints GetColor();
+        public CircleFilm(double radius) : base(radius)
+        {
+        }
     }
 }

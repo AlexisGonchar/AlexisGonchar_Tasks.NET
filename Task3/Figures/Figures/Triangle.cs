@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
@@ -11,10 +12,11 @@ namespace Figures
         private double[] sides;
         public Triangle(int a, int b, int c)
         {
-            if(IsExist(a, b, c))
+            if(!IsExist(a, b, c))
             {
-                sides = new double[] { a, b, c };
+                throw new InvalidParametersException();
             }
+            sides = new double[] { a, b, c };
         }
 
         private bool IsExist(int a, int b, int c)

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WorkTable;
 
 namespace Figures
 {
-    public interface Paper
+    public class RectangleFilm : Rectangle, Film
     {
-        void Paint(Paints newColor);
-
-        Paints GetColor();
+        public RectangleFilm(double a, double b) : base(a, b)
+        {
+        }
     }
 }

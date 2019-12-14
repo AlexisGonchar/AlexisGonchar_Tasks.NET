@@ -8,10 +8,10 @@ using WorkTable;
 
 namespace Figures
 {
-    public class TrianglePaper : Triangle, Paper
+    public class RectanglePaper : Rectangle, Paper
     {
         private Paints color;
-        public TrianglePaper(int a, int b, int c) : base(a, b, c)
+        public RectanglePaper(double a, double b) : base(a, b)
         {
         }
 
