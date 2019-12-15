@@ -9,7 +9,7 @@ namespace Figures
 {
     public abstract class Rectangle : IFigure
     {
-        double[] sides;
+        public double[] sides;
 
         public Rectangle(double a, double b)
         {

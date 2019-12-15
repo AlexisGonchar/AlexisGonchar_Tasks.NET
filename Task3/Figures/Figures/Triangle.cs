@@ -9,7 +9,7 @@ namespace Figures
 {
     public abstract class Triangle : IFigure
     {
-        private double[] sides;
+        public double[] sides;
         public Triangle(double a, double b, double c)
         {
             if(!IsExist(a, b, c))
@@ -66,7 +66,7 @@ namespace Figures
             Triangle triangle = obj as Triangle;
             if (triangle == null)
                 return false;
-            return sides[0] == triangle.sides[0] && sides[1] == triangle.sides[1] && sides[3] == triangle.sides[3];
+            return sides[0] == triangle.sides[0] && sides[1] == triangle.sides[1] && sides[2] == triangle.sides[2];
         }
 
         /// <summary>

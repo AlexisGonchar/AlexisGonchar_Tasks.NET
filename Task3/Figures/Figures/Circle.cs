@@ -9,7 +9,7 @@ namespace Figures
 {
     public abstract class Circle : IFigure
     {
-        private double radius;
+        public double radius;
 
         public Circle(double radius)
         {

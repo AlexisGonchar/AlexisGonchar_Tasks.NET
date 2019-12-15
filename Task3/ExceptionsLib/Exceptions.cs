@@ -55,7 +55,7 @@ namespace ExceptionsLib
         }
 
         /// <summary>
-        /// Cannot to cutting the figure
+        /// Cannot put figure in the box
         /// </summary>
         public class NoPlaceException : Exception
         {
@@ -69,7 +69,7 @@ namespace ExceptionsLib
         }
 
         /// <summary>
-        /// Cannot to cutting the figure
+        /// This figure is already in the box
         /// </summary>
         public class SameFigureException : Exception
         {
@@ -77,7 +77,21 @@ namespace ExceptionsLib
             {
                 get
                 {
-                    return "There is no more space in the box.";
+                    return "This figure is already in the box.";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Box is empty
+        /// </summary>
+        public class EmptyBoxException : Exception
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "Box is empty.";
                 }
             }
         }

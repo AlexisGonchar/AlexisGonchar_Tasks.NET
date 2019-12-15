@@ -16,7 +16,7 @@ namespace WorkTable
         /// <param name="figure"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        public IFigure CutFigure(IFigure figure, float radius)
+        public IFigure CutFigure(IFigure figure, double radius)
         {
             IFigure newFigure = CreateFigure(figure, radius);
             return newFigure;
@@ -29,7 +29,7 @@ namespace WorkTable
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public IFigure CutFigure(IFigure figure, float a, float b)
+        public IFigure CutFigure(IFigure figure, double a, double b)
         {
             IFigure newFigure = CreateFigure(figure, a, b);
             return newFigure;
@@ -43,13 +43,13 @@ namespace WorkTable
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public IFigure GetFigure(IFigure figure, float a, float b, float c)
+        public IFigure GetFigure(IFigure figure, double a, double b, double c)
         {
             IFigure newFigure = CreateFigure(figure, a, b, c);
             return newFigure;
         }
 
-        private IFigure CreateFigure(IFigure figure, params float[] values)
+        public IFigure CreateFigure(IFigure figure, params double[] values)
         {
             IFigure newFigure = null;
             if(figure is Paper)
@@ -71,13 +71,13 @@ namespace WorkTable
                     switch (values.Length)
                     {
                         case 1:
-                            figure = new CircleFilm(values[0]);
+                            figure = new CircleFilm(figure, values[0]);
                             break;
                         case 2:
-                            figure = new RectangleFilm(values[0], values[1]);
+                            figure = new RectangleFilm(figure, values[0], values[1]);
                             break;
                         case 3:
-                            figure = new TriangleFilm(values[0], values[1], values[2]);
+                            figure = new TriangleFilm(figure, values[0], values[1], values[2]);
                             break;
                         default:
                             throw new InvalidParametersException();

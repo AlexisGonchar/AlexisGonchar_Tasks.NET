@@ -23,7 +23,7 @@ namespace WorkTable
         /// <param name="Material"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float radius)
+        public IFigure GetFigure(Material material, double radius)
         {
             IFigure figure = CreateFigure(material, radius);
             return figure;
@@ -36,7 +36,7 @@ namespace WorkTable
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float a, float b)
+        public IFigure GetFigure(Material material, double a, double b)
         {
             IFigure figure = CreateFigure(material, a, b);
             return figure;
@@ -50,13 +50,13 @@ namespace WorkTable
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public IFigure GetFigure(Material material, float a, float b, float c)
+        public IFigure GetFigure(Material material, double a, double b, double c)
         {
             IFigure figure = CreateFigure(material, a, b, c);
             return figure;
         }
 
-        private IFigure CreateFigure(Material material, params float[] values)
+        public IFigure CreateFigure(Material material, params double[] values)
         {
             IFigure figure = null;
             switch (material)
