@@ -7,12 +7,24 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing a film circle
+    /// </summary>
     public class CircleFilm : Circle, Film
     {
+        /// <summary>
+        /// Initializes a new instance of the CircleFilm class
+        /// </summary>
+        /// <param name="radius"> Circle radius</param>
         public CircleFilm(double radius) : base(radius)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the CircleFilm class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="radius"> Circle radius</param>
         public CircleFilm(IFigure figure, double radius) : base(figure, radius)
         {
             if (!(figure is Paper))

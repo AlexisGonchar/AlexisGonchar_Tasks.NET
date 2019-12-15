@@ -7,10 +7,21 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing a rectangle
+    /// </summary>
     public abstract class Rectangle : IFigure
     {
+        /// <summary>
+        /// Sides of rectangle
+        /// </summary>
         public double[] sides;
 
+        /// <summary>
+        /// Initializes a new instance of the Rectangle class
+        /// </summary>
+        /// <param name="a">Width of a rectangle</param>
+        /// <param name="b">Height of a rectangle</param>
         public Rectangle(double a, double b)
         {
             if(a <= 0 || b <= 0)
@@ -20,6 +31,12 @@ namespace Figures
             sides = new double[] { a, b };
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Rectangle class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="a"> Width of a rectangle</param>
+        /// <param name="b"> Height of a rectangle</param>
         public Rectangle(IFigure figure, double a, double b)
         {
             if (a <= 0 || b <= 0)
@@ -33,11 +50,19 @@ namespace Figures
             }
         }
 
+        /// <summary>
+        /// Get the perimeter of a rectangle
+        /// </summary>
+        /// <returns></returns>
         public double GetPerimeter()
         {
             return 2 * (sides[0] + sides[1]);
         }
 
+        /// <summary>
+        /// Get the area of a rectangle
+        /// </summary>
+        /// <returns></returns>
         public double GetSquare()
         {
             return sides[0] * sides[1];

@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ExceptionsLib.Exceptions;
+﻿using static ExceptionsLib.Exceptions;
 using Figures;
 
 namespace WorkTable
 {
-
-    public enum Material
-    {
-        Paper,
-        Film
-    }
-
+    /// <summary>
+    /// Class Class representing a factory 
+    /// </summary>
     public class FiguresFactory
     {
         /// <summary>
@@ -56,6 +47,12 @@ namespace WorkTable
             return figure;
         }
 
+        /// <summary>
+        /// Сreating a specific figure
+        /// </summary>
+        /// <param name="material"> Material type</param>
+        /// <param name="values"> Figure's data</param>
+        /// <returns></returns>
         public IFigure CreateFigure(Material material, params double[] values)
         {
             IFigure figure = null;

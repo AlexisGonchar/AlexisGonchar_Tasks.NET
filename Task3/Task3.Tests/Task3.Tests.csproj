@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Box\BoxLib.csproj">
+      <Project>{efe2e089-f95a-420f-a46f-7580cf68b353}</Project>
+      <Name>BoxLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExceptionsLib\ExceptionsLib.csproj">
       <Project>{cb87f975-9c41-4664-8b0a-2132aa29cd5e}</Project>
       <Name>ExceptionsLib</Name>

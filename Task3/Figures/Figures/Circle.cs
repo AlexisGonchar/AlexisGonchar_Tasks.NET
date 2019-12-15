@@ -7,10 +7,20 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing a circle
+    /// </summary>
     public abstract class Circle : IFigure
     {
+        /// <summary>
+        /// Circle radius
+        /// </summary>
         public double radius;
 
+        /// <summary>
+        /// Initializes a new instance of the Circle class
+        /// </summary>
+        /// <param name="radius">Circle radius</param>
         public Circle(double radius)
         {
             if(radius <= 0)
@@ -20,6 +30,11 @@ namespace Figures
             this.radius = radius;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Circle class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="radius"> Circle radius</param>
         public Circle(IFigure figure, double radius)
         {
             if (radius <= 0)
@@ -33,11 +48,19 @@ namespace Figures
             }            
         }
 
+        /// <summary>
+        /// Get the perimeter of a circle
+        /// </summary>
+        /// <returns></returns>
         public double GetPerimeter()
         {
             return 2 * Math.PI * radius;
         }
 
+        /// <summary>
+        /// Get the area of a circle
+        /// </summary>
+        /// <returns></returns>
         public double GetSquare()
         {
             return Math.PI * radius * radius;

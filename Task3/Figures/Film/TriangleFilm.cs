@@ -7,12 +7,28 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing a film triangle
+    /// </summary>
     public class TriangleFilm : Triangle, Film
     {
+        /// <summary>
+        /// Initializes a new instance of the TriangleFilm class
+        /// </summary>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public TriangleFilm(double a, double b, double c) : base(a, b, c)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the TriangleFilm class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public TriangleFilm(IFigure figure, double a, double b, double c) : base(figure, a, b, c)
         {
             if (!(figure is Paper))

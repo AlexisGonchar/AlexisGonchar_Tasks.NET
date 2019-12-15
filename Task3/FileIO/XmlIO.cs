@@ -6,10 +6,18 @@ using System.Xml;
 
 namespace FileIO
 {
+    /// <summary>
+    /// Class for write and read through XmlWriter and XmlReader
+    /// </summary>
     public static class XmlIO
     {
         private static FiguresFactory factory = new FiguresFactory();
 
+        /// <summary>
+        /// Write method through XmlWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="figures"></param>
         public static void XmlWriteAll(string filePath, List<IFigure> figures)
         {
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -57,9 +65,14 @@ namespace FileIO
             writer.Close();
         }
 
-        public static Box XmlRead(String filePath)
+        /// <summary>
+        /// Read method through XmlReader
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static List<IFigure> XmlRead(String filePath)
         {
-            Box box = new Box();
+            List<IFigure> figures = new List<IFigure>();
 
             XmlReader reader = XmlReader.Create(filePath);
             while (reader.Read())
@@ -70,22 +83,22 @@ namespace FileIO
                     switch (value)
                     {
                         case "Paper":
-                            FiguresAdd(reader, box, Material.Paper);
+                            FiguresAdd(reader, figures, Material.Paper);
                             reader.Read();
                             Paints paint = (Paints)int.Parse(reader.ReadInnerXml());
-                            PaintBrush.PaintFigure(box.GetFigure(box.GetFiguresCount()), paint); 
+                            PaintBrush.PaintFigure(figures[figures.Count - 1], paint); 
                             break;
                         case "Film":
-                            FiguresAdd(reader, box, Material.Film);
+                            FiguresAdd(reader, figures, Material.Film);
                             break;
                     }
                 }
             }
             reader.Close();
-            return box;
+            return figures;
         }
 
-        private static void FiguresAdd(XmlReader reader, Box box, Material material)
+        private static void FiguresAdd(XmlReader reader, List<IFigure> figures, Material material)
         {
             double a, b, c;
             reader.Read();
@@ -95,14 +108,14 @@ namespace FileIO
                 case "Circle":
                     reader.Read();
                     a = int.Parse(reader.ReadInnerXml());
-                    box.AddFigure(factory.GetFigure(material, a));
+                    figures.Add(factory.GetFigure(material, a));
                     break;
                 case "Rectangle":
                     reader.Read();
                     a = int.Parse(reader.ReadInnerXml());
                     reader.Read();
                     b = int.Parse(reader.ReadInnerXml());
-                    box.AddFigure(factory.GetFigure(material, a, b));
+                    figures.Add(factory.GetFigure(material, a, b));
                     break;
                 case "Triangle":
                     reader.Read();
@@ -111,7 +124,7 @@ namespace FileIO
                     b = int.Parse(reader.ReadInnerXml());
                     reader.Read();
                     c = int.Parse(reader.ReadInnerXml());
-                    box.AddFigure(factory.GetFigure(material, a, b, c));
+                    figures.Add(factory.GetFigure(material, a, b, c));
                     break;
             }
         }

@@ -8,22 +8,32 @@ using static ExceptionsLib.Exceptions;
 namespace Figures
 {
     /// <summary>
-    /// Triangle of paper class
+    /// Class representing a paper triangle
     /// </summary>
     public class TrianglePaper : Triangle, Paper
     {
+        /// <summary>
+        /// Figure's color
+        /// </summary>
         private Paints color;
 
         /// <summary>
-        /// Constructor for crating triangle
+        /// Initializes a new instance of the TrianglePaper class
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="c"></param>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public TrianglePaper(double a, double b, double c) : base(a, b, c)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the TrianglePaper class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public TrianglePaper(IFigure figure, double a, double b, double c) : base(figure, a, b, c)
         {
             if (!(figure is Paper))
@@ -33,11 +43,18 @@ namespace Figures
             this.color = ((Paper)figure).GetColor();
         }
 
+        /// <summary>
+        /// Get figure's color
+        /// </summary>
         public Paints GetColor()
         {
             return color;
         }
 
+        /// <summary>
+        /// Paint method
+        /// </summary>
+        /// <param name="newColor"></param>
         public void Paint(Paints newColor)
         {
             if (color != Paints.None)

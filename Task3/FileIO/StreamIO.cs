@@ -1,17 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using Figures;
-using WorkTable;
 using System.Xml.Linq;
 using System.IO;
 using System.Linq;
+using WorkTable;
 
 namespace FileIO
 {
+    /// <summary>
+    /// Class for write and read through StreamWriter and StreamReader
+    /// </summary>
     public static class StreamIO
     {
         private static FiguresFactory factory = new FiguresFactory();
-        public static void StreamWriterAll(string filePath, List<IFigure> figures)
+
+        /// <summary>
+        /// Write method through StreamWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="figures"></param>
+        public static void StreamWriteAll(string filePath, List<IFigure> figures)
         {
             StreamWriter stream = new StreamWriter(filePath);
 
@@ -73,9 +82,14 @@ namespace FileIO
             stream.Close();
         }
 
-        public static Box StreamRead(string filePath)
+        /// <summary>
+        /// Read method through StreamReadr
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static List<IFigure> StreamRead(string filePath)
         {
-            Box box = new Box();
+            List<IFigure> figures = new List<IFigure>();
 
             StreamReader stream = new StreamReader(filePath);
             XDocument document = XDocument.Load(stream);
@@ -85,20 +99,20 @@ namespace FileIO
                 switch (xe.Element("material").Value)
                 {
                     case "Paper":
-                        FiguresAdd(xe, box, Material.Paper);
+                        FiguresAdd(xe, figures, Material.Paper);
                         Paints paint = (Paints)int.Parse(xe.Element("color").Value);
-                        PaintBrush.PaintFigure(box.GetFigure(box.GetFiguresCount()), paint);
+                        PaintBrush.PaintFigure(figures[figures.Count - 1], paint);
                         break;
                     case "Film":
-                        FiguresAdd(xe, box, Material.Film);
+                        FiguresAdd(xe, figures, Material.Film);
                         break;
                 }
             }
             stream.Close();
-            return box;
+            return figures;
         }
 
-        private static void FiguresAdd(XElement xe, Box box, Material material)
+        private static void FiguresAdd(XElement xe, List<IFigure> figures, Material material)
         {
             double a, b, c;
 
@@ -106,18 +120,18 @@ namespace FileIO
             {
                 case "Circle":
                     a = int.Parse(xe.Element("radius").Value);
-                    box.AddFigure(factory.GetFigure(material, a));
+                    figures.Add(factory.GetFigure(material, a));
                     break;
                 case "Rectangle":
                     a = int.Parse(xe.Element("sideA").Value);
                     b = int.Parse(xe.Element("sideB").Value);
-                    box.AddFigure(factory.GetFigure(material, a, b));
+                    figures.Add(factory.GetFigure(material, a, b));
                     break;
                 case "Triangle":
                     a = int.Parse(xe.Element("sideA").Value);
                     b = int.Parse(xe.Element("sideB").Value);
                     c = int.Parse(xe.Element("sideC").Value);
-                    box.AddFigure(factory.GetFigure(material, a, b, c));
+                    figures.Add(factory.GetFigure(material, a, b, c));
                     break;
             }
         }

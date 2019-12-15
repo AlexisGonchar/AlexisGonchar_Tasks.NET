@@ -5,16 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using static ExceptionsLib.Exceptions;
 using Figures;
+using WorkTable;
+using FileIO;
 
-namespace WorkTable
+namespace BoxLib
 {
+    /// <summary>
+    /// Box class
+    /// </summary>
     public class Box
     {
-        public List<IFigure> figures;
+        private List<IFigure> figures;
 
+        /// <summary>
+        /// Constructor for box
+        /// </summary>
         public Box()
         {
             figures = new List<IFigure>();
+        }
+
+        /// <summary>
+        /// Constructor for box
+        /// </summary>
+        /// <param name="figures"></param>
+        public Box(List<IFigure> figures)
+        {
+            if (figures.Count > 20)
+                throw new NoPlaceException();
+            this.figures = figures;
         }
 
         /// <summary>
@@ -157,6 +176,108 @@ namespace WorkTable
                 if (figure is Film)
                     filmFigures.Add(figure);
             return filmFigures;
+        }
+
+        /// <summary>
+        /// Write method through StreamWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void StreamWrite(string filePath)
+        {
+            StreamIO.StreamWriteAll(filePath, figures);
+        }
+
+        /// <summary>
+        /// Write method through StreamWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void StreamWriteFilm(string filePath)
+        {
+            List<IFigure> paperFigures = new List<IFigure>();
+            foreach (IFigure figure in figures)
+            {
+                if (figure is Film)
+                    paperFigures.Add(figure);
+            }
+            StreamIO.StreamWriteAll(filePath, paperFigures);
+        }
+
+        /// <summary>
+        /// Write method through StreamWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void StreamWritePaper(string filePath)
+        {
+            List<IFigure> paperFigures = new List<IFigure>();
+            foreach (IFigure figure in figures)
+            {
+                if (figure is Paper)
+                    paperFigures.Add(figure);
+            }
+            StreamIO.StreamWriteAll(filePath, paperFigures);
+        }
+
+        /// <summary>
+        /// Write method through XmlWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void XmlWrite(string filePath)
+        { 
+            XmlIO.XmlWriteAll(filePath, figures);
+        }
+
+        /// <summary>
+        /// Write method through XmlWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void XmlWritePaper(string filePath)
+        {
+            List<IFigure> paperFigures = new List<IFigure>();
+            foreach (IFigure figure in figures)
+            {
+                if (figure is Paper)
+                    paperFigures.Add(figure);
+            }
+            XmlIO.XmlWriteAll(filePath, paperFigures);
+        }
+
+        /// <summary>
+        /// Write method through XmlWriter
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void XmlWriteFilm(string filePath)
+        {
+            List<IFigure> paperFigures = new List<IFigure>();
+            foreach (IFigure figure in figures)
+            {
+                if (figure is Film)
+                    paperFigures.Add(figure);
+            }
+            XmlIO.XmlWriteAll(filePath, paperFigures);
+        }
+
+        /// <summary>
+        /// Read method through XmlReader
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void XmlRead(string filePath)
+        {
+            List<IFigure> figures = XmlIO.XmlRead(filePath);
+            if (figures.Count > 20)
+                throw new NoPlaceException();
+            this.figures = figures;
+        }
+
+        /// <summary>
+        /// Read method through StreamReader
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void StreamRead(string filePath)
+        {
+            List<IFigure> figures = StreamIO.StreamRead(filePath);
+            if (figures.Count > 20)
+                throw new NoPlaceException();
+            this.figures = figures;
         }
     }
 }

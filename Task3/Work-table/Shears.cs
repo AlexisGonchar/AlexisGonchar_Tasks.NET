@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ExceptionsLib.Exceptions;
+﻿using static ExceptionsLib.Exceptions;
 using Figures;
 
 namespace WorkTable
@@ -49,6 +44,12 @@ namespace WorkTable
             return newFigure;
         }
 
+        /// <summary>
+        /// Method for create cuttting figures
+        /// </summary>
+        /// <param name="figure"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public IFigure CreateFigure(IFigure figure, params double[] values)
         {
             IFigure newFigure = null;

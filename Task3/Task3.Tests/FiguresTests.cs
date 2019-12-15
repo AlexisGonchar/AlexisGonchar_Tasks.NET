@@ -5,6 +5,9 @@ using WorkTable;
 
 namespace Task3.Tests
 {
+    /// <summary>
+    /// Class for figures tests
+    /// </summary>
     [TestFixture]
     public class FiguresTests
     {

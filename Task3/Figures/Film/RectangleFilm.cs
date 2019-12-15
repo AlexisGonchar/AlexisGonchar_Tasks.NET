@@ -7,12 +7,26 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class  representing a film rectangle
+    /// </summary>
     public class RectangleFilm : Rectangle, Film
     {
+        /// <summary>
+        /// Initializes a new instance of the RectangleFilm class
+        /// </summary>
+        /// <param name="a"> Width of a rectangle</param>
+        /// <param name="b"> Height of a rectangle</param>
         public RectangleFilm(double a, double b) : base(a, b)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the RectangleFilm class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="a"> Width of a rectangle</param>
+        /// <param name="b"> Height of a rectangle</param>
         public RectangleFilm(IFigure figure, double a, double b) : base(figure, a, b)
         {
             if (!(figure is Paper))

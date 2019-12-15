@@ -2,15 +2,24 @@
 using Figures;
 using static ExceptionsLib.Exceptions;
 using WorkTable;
+using BoxLib;
 
 namespace Task3.Tests
 {
+    /// <summary>
+    /// Class for exception tests 
+    /// </summary>
     [TestFixture]
     public class ExceptionsTests
     {
         FiguresFactory factory = new FiguresFactory();
         Shears shears = new Shears();
 
+        /// <summary>
+        /// InvalidPapametersException test
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="values"></param>
         [TestCase (Material.Film, -1)]
         [TestCase(Material.Film, 0, 5)]
         [TestCase(Material.Film, -10, 5, -1)]
@@ -26,6 +35,10 @@ namespace Task3.Tests
             Assert.Catch<InvalidParametersException>(func);
         }
 
+        /// <summary>
+        /// CutException test
+        /// </summary>
+        /// <param name="values"></param>
         [TestCase(4)]
         [TestCase(5,5,5)]
         [TestCase(4, 10)]
@@ -40,6 +53,11 @@ namespace Task3.Tests
             Assert.Catch<CutException>(func);
         }
 
+        /// <summary>
+        /// ImpossibleToPaintException test
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="values"></param>
         [TestCase(Material.Film, 1)]
         [TestCase(Material.Film, 1, 5)]
         [TestCase(Material.Film, 1, 5, 5)]
@@ -57,6 +75,9 @@ namespace Task3.Tests
             Assert.Catch<ImpossibleToPaintException>(func);
         }
 
+        /// <summary>
+        /// NoPlaceException test
+        /// </summary>
         [Test]
         public void NoPlaceTest()
         {
@@ -71,6 +92,11 @@ namespace Task3.Tests
             Assert.Catch<NoPlaceException>(func);
         }
 
+        /// <summary>
+        /// SameFiguresException test
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="values"></param>
         [TestCase(Material.Film, 1)]
         [TestCase(Material.Film, 1, 5)]
         [TestCase(Material.Film, 1, 5, 5)]
@@ -88,6 +114,9 @@ namespace Task3.Tests
             Assert.Catch<SameFigureException>(func);
         }
 
+        /// <summary>
+        /// EmptyBoxException test
+        /// </summary>
         [Test]
         public void EmptyBoxTest()
         {

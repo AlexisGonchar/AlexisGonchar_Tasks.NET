@@ -7,9 +7,22 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing an triangle
+    /// </summary>
     public abstract class Triangle : IFigure
     {
+        /// <summary>
+        /// Sides of triangle
+        /// </summary>
         public double[] sides;
+
+        /// <summary>
+        /// Initializes a new instance of the Triangle class
+        /// </summary>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public Triangle(double a, double b, double c)
         {
             if(!IsExist(a, b, c))
@@ -19,6 +32,13 @@ namespace Figures
             sides = new double[] { a, b, c };
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Triangle class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="a"> First side of a triangle</param>
+        /// <param name="b"> Second side of a triangle</param>
+        /// <param name="c"> Third side of a triangle</param>
         public Triangle(IFigure figure, double a, double b, double c)
         {
             if (!IsExist(a, b, c))
@@ -38,12 +58,20 @@ namespace Figures
                 (a > 0) && (b > 0) && (c > 0) && (a + b > c) && (a + c > b) && (b + c > a);
         }
 
+        /// <summary>
+        /// Get the area of a triangle
+        /// </summary>
+        /// <returns></returns>
         public double GetSquare()
         {
             double p = GetPerimeter() / 2.0;
             return Math.Sqrt(p * (p - sides[0]) * (p - sides[1]) * (p - sides[2]));
         }
 
+        /// <summary>
+        /// Get the perimeter of a triangle
+        /// </summary>
+        /// <returns></returns>
         public double GetPerimeter()
         {
             double perimeter = 0;

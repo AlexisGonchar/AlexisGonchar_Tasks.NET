@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<figures>
+	<figure>
+		<material>Film</material>
+		<form>Circle</form>
+		<radius>1</radius>
+	</figure>
+	<figure>
+		<material>Film</material>
+		<form>Rectangle</form>
+		<sideA>2</sideA>
+		<sideB>3</sideB>
+	</figure>
+	<figure>
+		<material>Film</material>
+		<form>Triangle</form>
+		<sideA>4</sideA>
+		<sideB>5</sideB>
+		<sideC>6</sideC>
+	</figure>
+</figures>

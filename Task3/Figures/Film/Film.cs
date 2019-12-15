@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
+    /// <summary>
+    /// Interface representing a film figure
+    /// </summary>
     public interface Film
     {
     }

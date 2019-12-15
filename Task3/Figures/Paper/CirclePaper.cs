@@ -8,13 +8,29 @@ using static ExceptionsLib.Exceptions;
 
 namespace Figures
 {
+    /// <summary>
+    /// Class representing a paper circle
+    /// </summary>
     public class CirclePaper : Circle, Paper
     {
+        /// <summary>
+        /// Figure's color
+        /// </summary>
         private Paints color;
+
+        /// <summary>
+        /// Initializes a new instance of the CirclePaper class
+        /// </summary>
+        /// <param name="radius"> Circle radius</param>
         public CirclePaper(double radius) : base(radius)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the CirclePaper class, cutting from another figure
+        /// </summary>
+        /// <param name="figure"> Figure for cutting</param>
+        /// <param name="radius"> Circle radius</param>
         public CirclePaper(IFigure figure, double radius) : base(figure, radius)
         {
             if(!(figure is Paper))
@@ -24,11 +40,18 @@ namespace Figures
             this.color = ((Paper)figure).GetColor();
         }
 
+        /// <summary>
+        /// Gert figure's color
+        /// </summary>
         public Paints GetColor()
         {
             return color;
         }
 
+        /// <summary>
+        /// Paint mathod
+        /// </summary>
+        /// <param name="newColor"></param>
         public void Paint(Paints newColor)
         {
             if(color != Paints.None)

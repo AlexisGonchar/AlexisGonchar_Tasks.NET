@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO", "FileIO\FileIO.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.Tests", "Task3.Tests\Task3.Tests.csproj", "{A85589B2-F781-4EF8-94B5-71593A263573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxLib", "Box\BoxLib.csproj", "{EFE2E089-F95A-420F-A46F-7580CF68B353}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A85589B2-F781-4EF8-94B5-71593A263573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85589B2-F781-4EF8-94B5-71593A263573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85589B2-F781-4EF8-94B5-71593A263573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE2E089-F95A-420F-A46F-7580CF68B353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE2E089-F95A-420F-A46F-7580CF68B353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE2E089-F95A-420F-A46F-7580CF68B353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE2E089-F95A-420F-A46F-7580CF68B353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
