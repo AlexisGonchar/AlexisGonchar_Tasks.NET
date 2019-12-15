@@ -10,7 +10,7 @@ namespace WorkTable
 {
     public class Box
     {
-        List<IFigure> figures;
+        public List<IFigure> figures;
 
         public Box()
         {

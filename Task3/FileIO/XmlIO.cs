@@ -12,7 +12,7 @@ namespace FileIO
 {
     public static class XmlIO
     {
-        private static FiguresFactory figuresFactory = new FiguresFactory();
+        private static FiguresFactory factory = new FiguresFactory();
 
         public static void XmlWriteAll(string filePath, List<IFigure> figures)
         {
@@ -48,6 +48,56 @@ namespace FileIO
             }
             writer.WriteEndElement();
             writer.WriteEndDocument();
+            writer.Close();
+        }
+
+        public static Box XmlRead(String filePath)
+        {
+            Box box = new Box();
+
+            XmlReader reader = XmlReader.Create(filePath);
+            while (reader.Read())
+            {
+                if (reader.Name == "material")
+                {
+                    String value = reader.ReadInnerXml();
+                    switch (value)
+                    {
+                        case "Paper":
+                            FiguresAdd(reader, box, Material.Paper);
+                            break;
+                        case "Film":
+                            FiguresAdd(reader, box, Material.Film);
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+            return box;
+        }
+
+        private static void FiguresAdd(XmlReader reader, Box box, Material material)
+        {
+            double a, b, c;
+            String value = reader.ReadInnerXml();
+            switch (value)
+            {
+                case "Circle":
+                    a = int.Parse(reader.ReadInnerXml());
+                    box.AddFigure(factory.GetFigure(material, a));
+                    break;
+                case "Rectangle":
+                    a = int.Parse(reader.ReadInnerXml());
+                    b = int.Parse(reader.ReadInnerXml());
+                    box.AddFigure(factory.GetFigure(material, a, b));
+                    break;
+                case "Triangle":
+                    a = int.Parse(reader.ReadInnerXml());
+                    b = int.Parse(reader.ReadInnerXml());
+                    c = int.Parse(reader.ReadInnerXml());
+                    box.AddFigure(factory.GetFigure(material, a, b, c));
+                    break;
+            }
         }
     }
 }
