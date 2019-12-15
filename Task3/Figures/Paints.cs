@@ -8,6 +8,7 @@ namespace Figures
 {
     public enum Paints
     {
+        None,
         Black,
         White,
         Red,

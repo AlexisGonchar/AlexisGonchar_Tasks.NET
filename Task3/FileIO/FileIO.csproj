@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StreamIO.cs" />
     <Compile Include="XmlIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

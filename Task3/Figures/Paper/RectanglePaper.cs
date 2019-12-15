@@ -30,7 +30,7 @@ namespace Figures
 
         public void Paint(Paints newColor)
         {
-            if (color != null)
+            if (color != Paints.None)
             {
                 throw new ImpossibleToPaintException();
             }
