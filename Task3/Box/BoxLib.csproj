@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BoxLib.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,7 +57,7 @@
       <Project>{8ff8c23a-a9a1-43b1-aff7-043dfab4f312}</Project>
       <Name>FileIO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Work-table\WorkTable.csproj">
+    <ProjectReference Include="..\WorkTable\WorkTable.csproj">
       <Project>{e630137c-d7ba-48a0-985e-65d267bc2a65}</Project>
       <Name>WorkTable</Name>
     </ProjectReference>

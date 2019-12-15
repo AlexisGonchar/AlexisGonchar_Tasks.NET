@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTable", "Work-table\WorkTable.csproj", "{E630137C-D7BA-48A0-985E-65D267BC2A65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTable", "WorkTable\WorkTable.csproj", "{E630137C-D7BA-48A0-985E-65D267BC2A65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figures", "Figures\Figures.csproj", "{77B5F3A5-3043-4E3D-BB51-3ED17AD7E614}"
 EndProject

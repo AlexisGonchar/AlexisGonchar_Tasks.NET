@@ -54,7 +54,7 @@
       <Project>{77b5f3a5-3043-4e3d-bb51-3ed17ad7e614}</Project>
       <Name>Figures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Work-table\WorkTable.csproj">
+    <ProjectReference Include="..\WorkTable\WorkTable.csproj">
       <Project>{e630137c-d7ba-48a0-985e-65d267bc2a65}</Project>
       <Name>WorkTable</Name>
     </ProjectReference>
