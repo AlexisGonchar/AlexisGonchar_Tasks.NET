@@ -59,10 +59,6 @@
       <Project>{ad16f085-dd26-497b-b80b-7f4a165cae08}</Project>
       <Name>ClientLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServerLib\ServerLib.csproj">
-      <Project>{481e9511-6271-4a18-8330-b8a0eb117f4f}</Project>
-      <Name>ServerLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

@@ -5,9 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using ClientLib;
 
-namespace ServerLib
+namespace ClientLib
 {
     /// <summary>
     /// Server class to communicate with clients using the TCP/IP Protocol stack.
@@ -47,9 +46,25 @@ namespace ServerLib
             this.port = port;
             ipAddress = IPAddress.Parse(ipAddressStr);
             endPoint = new IPEndPoint(ipAddress, port);
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Bind(endPoint);
+            socketListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socketListener.Bind(endPoint);
             clientsCount = count;
+        }
+
+        /// <summary>
+        /// Wait a new client connection.
+        /// </summary>
+        public void WaitClientConnection()
+        {
+            if (socketListener != null)
+            {
+                socketListener.Listen(clientsCount);
+                socket = socket.Accept();
+            }
+            else
+            {
+                throw new Exception("Server socket listener wasn't created");
+            }
         }
 
         /// <summary>
@@ -82,6 +97,52 @@ namespace ServerLib
 
                 return data.ToString();
             }
+        }
+
+        private void SendString(string text)
+        {
+            byte[] bytes = new byte[1024];
+
+            bytes = Encoding.ASCII.GetBytes(text);
+
+            socket.Send(bytes);
+        }
+
+        private string ReceiveString()
+        {
+            byte[] recvdData = new byte[1024];
+            string text = null;
+            int numBytes;
+
+            numBytes = socket.Receive(recvdData);
+            text = Encoding.ASCII.GetString(recvdData, 0, numBytes);
+
+            return text;
+        }
+
+        /// <summary>
+        /// Receive message.
+        /// </summary>
+        /// <returns></returns>
+        public Message Receive()
+        {
+            string clientName = ReceiveString();
+            string msgText = ReceiveString();
+
+            Message message = new Message(msgText, new Client(clientName));
+
+            messages.Add(message);
+
+            return message;
+        }
+
+        /// <summary>
+        /// Send a message to the client
+        /// </summary>
+        /// <param name="msg"> Message instance</param>
+        public void Send(Message msg)
+        {
+            SendString("Succesfully");
         }
     }
 }
