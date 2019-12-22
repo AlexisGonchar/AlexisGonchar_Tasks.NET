@@ -61,10 +61,13 @@ namespace Task4.Tests
         /// <summary>
         /// Testing transliting message
         /// </summary>
-        [Test]
-        public void TestTranslit()
+        [TestCase ("Харизма", "Kharizma")]
+        [TestCase("Шишка", "Shishka")]
+        [TestCase("Ленин", "Lenin")]
+        [TestCase("Привет Мир", "Privet Mir")]
+        public void TestTranslit(string rus, string eng)
         {
-            string expString = "Text: Shishka Kharizma; Client: Alexis - Succesfully";
+            string expString = "Text: " + eng + "; Client: Alexis - Succesfully";
             string actString = null;
             bool waitClientReceive = true;
 
@@ -72,7 +75,7 @@ namespace Task4.Tests
             {
                 Client client = new Client("Alexis");
                 ClientSocket clientSocket = new ClientSocket(client);
-                Message message = new Message("Шишка Харизма", client);
+                Message message = new Message(rus, client);
                 clientSocket.Connect();
                 clientSocket.Send(message);
                 while (waitClientReceive) ;
