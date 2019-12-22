@@ -90,10 +90,12 @@ namespace ClientLib
         /// <returns></returns>
         public Message Receive()
         {
-            string clientName = ReceiveString();
-            string msgText = ReceiveString();
+            string text = ReceiveString();
 
-            Message message = new Message(msgText, new Client(clientName));
+            string[] msgs = text.Split('_');
+
+
+            Message message = new Message(msgs[0], new Client(msgs[1]));
             handler.OnLoadMessage(message);
 
             return message;
@@ -114,6 +116,15 @@ namespace ClientLib
         public void Close()
         {
             socket.Close();
+        }
+
+        /// <summary>
+        /// Returns list messages
+        /// </summary>
+        /// <returns></returns>
+        public System.Collections.Generic.List<Message> GetMessages()
+        {
+            return handler.messages;
         }
     }
 }

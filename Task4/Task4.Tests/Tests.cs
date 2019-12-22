@@ -5,9 +5,15 @@ using System;
 
 namespace Task4.Tests
 {
+    /// <summary>
+    /// Class for testing classes
+    /// </summary>
     [TestFixture]
     public class Tests
     {
+        /// <summary>
+        /// Testing Response from Server
+        /// </summary>
         [Test]
         public void TestServerResponse()
         {
@@ -22,9 +28,9 @@ namespace Task4.Tests
                 Message message = new Message("Hello User", client);
                 clientSocket.Connect();
                 clientSocket.Send(message);
+                while (waitClientReceive) ;
                 actString = clientSocket.Receive();
                 clientSocket.Close();
-                waitClientReceive = false;
             };
 
             Action runServer = () =>
@@ -36,8 +42,8 @@ namespace Task4.Tests
                 }
                 catch { }
                 Message messages = server.Receive();
+                waitClientReceive = false;
                 server.Send(messages);
-                server.Close();
             };
 
             Thread serverThread = new Thread(new ThreadStart(runServer));
@@ -46,15 +52,15 @@ namespace Task4.Tests
             serverThread.Start();
             clientThread.Start();
 
-            while (waitClientReceive);
+            Thread.Sleep(2000);
 
             Assert.NotNull(actString);
             Assert.AreEqual(expString, actString);
-
-            serverThread.Abort();
-            clientThread.Abort();
         }
 
+        /// <summary>
+        /// Testing transliting message
+        /// </summary>
         [Test]
         public void TestTranslit()
         {
@@ -66,12 +72,12 @@ namespace Task4.Tests
             {
                 Client client = new Client("Alexis");
                 ClientSocket clientSocket = new ClientSocket(client);
-                Message message = new Message("Hello User", client);
+                Message message = new Message("Шишка Харизма", client);
                 clientSocket.Connect();
                 clientSocket.Send(message);
+                while (waitClientReceive) ;
                 actString = clientSocket.Receive();
                 clientSocket.Close();
-                waitClientReceive = false;
             };
 
             Action runServer = () =>
@@ -83,8 +89,8 @@ namespace Task4.Tests
                 }
                 catch { }
                 Message messages = server.Receive();
+                waitClientReceive = false;
                 server.Send(messages);
-                server.Close();
             };
 
             Thread serverThread = new Thread(new ThreadStart(runServer));
@@ -93,12 +99,10 @@ namespace Task4.Tests
             serverThread.Start();
             clientThread.Start();
 
-            while (waitClientReceive);
+            Thread.Sleep(2000);
 
+            Assert.NotNull(actString);
             Assert.AreEqual(expString, actString);
-
-            serverThread.Abort();
-            clientThread.Abort();
         }
     }
 }

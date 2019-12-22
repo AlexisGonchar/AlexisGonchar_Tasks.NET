@@ -103,13 +103,10 @@ namespace ClientLib
         /// <param name="msg">Message instance.</param>
         public void Send(Message msg)
         {
-            byte[] clientMsg = new byte[50];
             byte[] message = new byte[1024];
-
-            clientMsg = Encoding.UTF8.GetBytes(client.Name);
-            message = Encoding.UTF8.GetBytes(msg.Text);
-
-            socket.Send(clientMsg);
+            
+            message = Encoding.UTF8.GetBytes(msg.Text + "_" + msg.Client.Name);
+            
             socket.Send(message);
         }
 
@@ -129,12 +126,8 @@ namespace ClientLib
             string recvMsg = null;
             int bytesrcv;
             byte[] recvData = new byte[1024];
-            do
-            {
-                bytesrcv = socket.Receive(recvData);
-                recvMsg = Encoding.UTF8.GetString(recvData, 0, bytesrcv);
-            }
-            while (socket.Available>0);
+            bytesrcv = socket.Receive(recvData);
+            recvMsg = Encoding.UTF8.GetString(recvData, 0, bytesrcv);
 
             return recvMsg;
         }
