@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 
@@ -52,9 +50,15 @@ namespace ClientLib
                 string text = "";
                 foreach(char letter in msg)
                 {
+                    char biglet = Char.ToLower(letter);
                     if (RUSTOENG.ContainsKey(letter))
                     {
                         text += RUSTOENG[letter];
+                    }
+                    else if (RUSTOENG.ContainsKey(biglet))
+                    {
+                        text += Char.ToUpper(RUSTOENG[biglet][0]) +
+                                RUSTOENG[biglet].Substring(1);
                     }
                     else
                     {
@@ -102,8 +106,8 @@ namespace ClientLib
             byte[] clientMsg = new byte[50];
             byte[] message = new byte[1024];
 
-            clientMsg = Encoding.ASCII.GetBytes(client.Name);
-            message = Encoding.ASCII.GetBytes(msg.Text);
+            clientMsg = Encoding.UTF8.GetBytes(client.Name);
+            message = Encoding.UTF8.GetBytes(msg.Text);
 
             socket.Send(clientMsg);
             socket.Send(message);
@@ -125,14 +129,22 @@ namespace ClientLib
             string recvMsg = null;
             int bytesrcv;
             byte[] recvData = new byte[1024];
-
-            if (socket.Available > 0)
+            do
             {
                 bytesrcv = socket.Receive(recvData);
-                recvMsg = Encoding.ASCII.GetString(recvData, 0, bytesrcv);
+                recvMsg = Encoding.UTF8.GetString(recvData, 0, bytesrcv);
             }
+            while (socket.Available>0);
 
             return recvMsg;
+        }
+
+        /// <summary>
+        /// Close the connection.
+        /// </summary>
+        public void Close()
+        {
+            socket.Close();
         }
     }
 }

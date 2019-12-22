@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ClientLib
 {
@@ -29,7 +26,7 @@ namespace ClientLib
         /// <param name="port">A port.</param>
         /// <param name="ipAddressStr">IP address.</param>
         /// <param name="count">The maximum length of the pending connections queue.</param>
-        public Server(int count, int port = 11000, string ipAddressStr = "127.0.0.1")
+        public Server(int count, int port = 8080, string ipAddressStr = "127.0.0.1")
         {
             this.port = port;
             ipAddress = IPAddress.Parse(ipAddressStr);
@@ -58,7 +55,7 @@ namespace ClientLib
             if (socketListener != null)
             {
                 socketListener.Listen(clientsCount);
-                socket = socket.Accept();
+                socket = socketListener.Accept();
             }
             else
             {
@@ -66,43 +63,11 @@ namespace ClientLib
             }
         }
 
-        /// <summary>
-        /// Method for receiving messages from clients.
-        /// </summary>
-        /// <returns></returns>
-        public string Listen()
-        {
-            socket.Listen(clientsCount);
-            while (true)
-            {
-                Socket listener = socket.Accept();
-                byte[] buffer = new byte[1024];
-                var size = 0;
-                StringBuilder data = new StringBuilder();
-
-                do
-                {
-                    size = listener.Receive(buffer);
-                    data.Append(Encoding.UTF8.GetString(buffer, 0, size));
-
-                }
-                while (listener.Available > 0);
-
-                byte[] msg = Encoding.UTF8.GetBytes("Successfully");
-                listener.Send(msg);
-
-                listener.Shutdown(SocketShutdown.Both);
-                listener.Close();
-
-                return data.ToString();
-            }
-        }
-
         private void SendString(string text)
         {
             byte[] bytes = new byte[1024];
 
-            bytes = Encoding.ASCII.GetBytes(text);
+            bytes = Encoding.UTF8.GetBytes(text);
 
             socket.Send(bytes);
         }
@@ -114,7 +79,7 @@ namespace ClientLib
             int numBytes;
 
             numBytes = socket.Receive(recvdData);
-            text = Encoding.ASCII.GetString(recvdData, 0, numBytes);
+            text = Encoding.UTF8.GetString(recvdData, 0, numBytes);
 
             return text;
         }
@@ -141,6 +106,14 @@ namespace ClientLib
         public void Send(Message msg)
         {
             SendString(msg.ToString() + " - Succesfully");
+        }
+
+        /// <summary>
+        /// Close the connection.
+        /// </summary>
+        public void Close()
+        {
+            socket.Close();
         }
     }
 }
