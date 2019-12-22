@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using ClientLib;
 
 namespace ServerLib
 {
@@ -18,29 +19,46 @@ namespace ServerLib
         private int port;
         private IPEndPoint endPoint;
         private Socket socket;
+        private Socket socketListener;
+        private int clientsCount;
+
+        /// <summary>
+        /// Client messages
+        /// </summary>
+        private List<Message> messages = new List<Message>();
+
+        /// <summary>
+        /// Get all client messages
+        /// </summary>
+        /// <returns></returns>
+        public List<Message> GetAllMessages()
+        {
+            return messages;
+        }
 
         /// <summary>
         /// Initializes a new instance of the Server class.
         /// </summary>
         /// <param name="port">A port.</param>
         /// <param name="ipAddressStr">IP address.</param>
-        public Server(int port = 11000, string ipAddressStr = "127.0.0.1")
+        /// <param name="count">The maximum length of the pending connections queue.</param>
+        public Server(int count, int port = 11000, string ipAddressStr = "127.0.0.1")
         {
             this.port = port;
             ipAddress = IPAddress.Parse(ipAddressStr);
             endPoint = new IPEndPoint(ipAddress, port);
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(endPoint);
+            clientsCount = count;
         }
 
         /// <summary>
         /// Method for receiving messages from clients.
         /// </summary>
-        /// <param name="count">The maximum length of the pending connections queue.</param>
         /// <returns></returns>
-        public string Listen(int count)
+        public string Listen()
         {
-            socket.Listen(count);
+            socket.Listen(clientsCount);
             while (true)
             {
                 Socket listener = socket.Accept();
