@@ -21,19 +21,7 @@ namespace ClientLib
         private Socket socketListener;
         private int clientsCount;
 
-        /// <summary>
-        /// Client messages
-        /// </summary>
-        private List<Message> messages = new List<Message>();
-
-        /// <summary>
-        /// Get all client messages
-        /// </summary>
-        /// <returns></returns>
-        public List<Message> GetAllMessages()
-        {
-            return messages;
-        }
+        private ServerMessageHandler handler;
 
         /// <summary>
         /// Initializes a new instance of the Server class.
@@ -49,6 +37,17 @@ namespace ClientLib
             socketListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socketListener.Bind(endPoint);
             clientsCount = count;
+            SetEvent();
+        }
+
+        private void SetEvent()
+        {
+            handler = new ServerMessageHandler();
+
+            handler.MsgEvent += (Message msg) =>
+            {
+                handler.messages.Add(msg);
+            };
         }
 
         /// <summary>
@@ -130,8 +129,7 @@ namespace ClientLib
             string msgText = ReceiveString();
 
             Message message = new Message(msgText, new Client(clientName));
-
-            messages.Add(message);
+            handler.OnLoadMessage(message);
 
             return message;
         }
@@ -142,7 +140,7 @@ namespace ClientLib
         /// <param name="msg"> Message instance</param>
         public void Send(Message msg)
         {
-            SendString("Succesfully");
+            SendString(msg.ToString() + " - Succesfully");
         }
     }
 }

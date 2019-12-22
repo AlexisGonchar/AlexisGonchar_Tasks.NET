@@ -19,6 +19,17 @@ namespace ClientLib
         private IPAddress ipAddress;
         private int port;
 
+        private ClientMessageHandler handler;
+
+        Dictionary<char, string> RUSTOENG = new Dictionary<char, string>()
+        {
+            {'а', "a"}, {'б', "b"}, {'в', "v"}, {'г', "g"}, {'д', "d"}, {'е', "e"}, {'ё', "e"},
+            {'ж', "zh"}, {'з', "z"}, {'и', "i"}, {'й', "y"}, {'к', "k"}, {'л', "l"}, {'м', "m"},
+            {'н', "n"}, {'о', "o"}, {'п', "p"}, {'р', "r"}, {'с', "s"}, {'т', "t"}, {'у', "u"},
+            {'ф', "f"}, {'х', "kh"}, {'ц', "ts"}, {'ч', "ch"}, {'ш', "sh"}, {'щ', "sch"}, {'ь', ""},
+            {'ы', "y"}, {'ъ', ""}, {'э', "e"}, {'ю', "yu"}, {'я', "y"}
+        };
+
         /// <summary>
         /// Initializes a new instance of the ClientSocket class.
         /// </summary>
@@ -30,6 +41,29 @@ namespace ClientLib
             this.client = client;
             this.port = port;
             ipAddress = IPAddress.Parse(ip);
+            SetEvent();
+        }
+
+        private void SetEvent()
+        {
+            handler = new ClientMessageHandler();
+            handler.MsgEvent += (string msg) =>
+            {
+                string text = "";
+                foreach(char letter in msg)
+                {
+                    if (RUSTOENG.ContainsKey(letter))
+                    {
+                        text += RUSTOENG[letter];
+                    }
+                    else
+                    {
+                        text += letter;
+                    } 
+                }
+                msg = text;
+                return msg;
+            };
         }
 
         /// <summary>
@@ -81,9 +115,8 @@ namespace ClientLib
         /// <returns>Returns answer from Server.</returns>
         public string Receive()
         {
-            string answer = null;
-            answer = ReceiveString();
-
+            string answer = ReceiveString();
+            answer = handler.OnLoadMessage(answer);
             return answer;
         }
 
