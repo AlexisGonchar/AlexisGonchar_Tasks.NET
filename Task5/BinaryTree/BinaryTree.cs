@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BinaryTree
 {
+    [Serializable]
     public class BinaryTree<T> : IComparable
         where T : IComparable
     {
-
         public T Data { get; set; }
         public BinaryTree<T> Left { get; set;  }
         public BinaryTree<T> Right { get; set; }
-        public BinaryTree<T> Parent { get; set; }
+        
+        private BinaryTree<T> parent;
 
         public BinaryTree()
         {
@@ -23,31 +26,37 @@ namespace BinaryTree
         public BinaryTree(T data, BinaryTree<T> parent = null)
         {
             Data = data;
-            Parent = parent;
+            this.parent = parent;
         }
 
         public void Add(T data)
         {
-            if(data.CompareTo(Data) < 0)
+            if(Data == null)
             {
-                if(Left == null)
+                Data = data;
+            }else
+            {
+                if (data.CompareTo(Data) < 0)
                 {
-                    Left = new BinaryTree<T>(data);
+                    if (Left == null)
+                    {
+                        Left = new BinaryTree<T>(data, this);
+                    }
+                    else
+                    {
+                        Left.Add(data);
+                    }
                 }
                 else
                 {
-                    Left.Add(data);
-                }
-            }
-            else
-            {
-                if(Right == null)
-                {
-                    Right = new BinaryTree<T>(data);
-                }
-                else
-                {
-                    Right.Add(data);
+                    if (Right == null)
+                    {
+                        Right = new BinaryTree<T>(data, this);
+                    }
+                    else
+                    {
+                        Right.Add(data);
+                    }
                 }
             }
         }
@@ -97,13 +106,13 @@ namespace BinaryTree
                 return true;
             }
 
-            if (tree.Left == null && tree.Right == null && tree.Parent != null)
+            if (tree.Left == null && tree.Right == null && tree.parent != null)
             {
-                if (tree == tree.Parent.Left)
-                    tree.Parent.Left = null;
+                if (tree == tree.parent.Left)
+                    tree.parent.Left = null;
                 else
                 {
-                    tree.Parent.Right = null;
+                    tree.parent.Right = null;
                 }
                 return true;
             }
@@ -112,14 +121,14 @@ namespace BinaryTree
             if (tree.Left != null && tree.Right == null)
             {
                 //Меняем родителя
-                tree.Left.Parent = tree.Parent;
-                if (tree == tree.Parent.Left)
+                tree.Left.parent = tree.parent;
+                if (tree == tree.parent.Left)
                 {
-                    tree.Parent.Left = tree.Left;
+                    tree.parent.Left = tree.Left;
                 }
-                else if (tree == tree.Parent.Right)
+                else if (tree == tree.parent.Right)
                 {
-                    tree.Parent.Right = tree.Left;
+                    tree.parent.Right = tree.Left;
                 }
                 return true;
             }
@@ -128,14 +137,14 @@ namespace BinaryTree
             if (tree.Left == null && tree.Right != null)
             {
                 //Меняем родителя
-                tree.Right.Parent = tree.Parent;
-                if (tree == tree.Parent.Left)
+                tree.Right.parent = tree.parent;
+                if (tree == tree.parent.Left)
                 {
-                    tree.Parent.Left = tree.Right;
+                    tree.parent.Left = tree.Right;
                 }
-                else if (tree == tree.Parent.Right)
+                else if (tree == tree.parent.Right)
                 {
-                    tree.Parent.Right = tree.Right;
+                    tree.parent.Right = tree.Right;
                 }
                 return true;
             }
@@ -151,18 +160,18 @@ namespace BinaryTree
                 }
 
                 //Если самый левый элемент является первым потомком
-                if (curTree.Parent == tree)
+                if (curTree.parent == tree)
                 {
                     curTree.Left = tree.Left;
-                    tree.Left.Parent = curTree;
-                    curTree.Parent = tree.Parent;
-                    if (tree == tree.Parent.Left)
+                    tree.Left.parent = curTree;
+                    curTree.parent = tree.parent;
+                    if (tree == tree.parent.Left)
                     {
-                        tree.Parent.Left = curTree;
+                        tree.parent.Left = curTree;
                     }
-                    else if (tree == tree.Parent.Right)
+                    else if (tree == tree.parent.Right)
                     {
-                        tree.Parent.Right = curTree;
+                        tree.parent.Right = curTree;
                     }
                     return true;
                 }
@@ -171,21 +180,21 @@ namespace BinaryTree
                 {
                     if (curTree.Right != null)
                     {
-                        curTree.Right.Parent = curTree.Parent;
+                        curTree.Right.parent = curTree.parent;
                     }
-                    curTree.Parent.Left = curTree.Right;
+                    curTree.parent.Left = curTree.Right;
                     curTree.Right = tree.Right;
                     curTree.Left = tree.Left;
-                    tree.Left.Parent = curTree;
-                    tree.Right.Parent = curTree;
-                    curTree.Parent = tree.Parent;
-                    if (tree == tree.Parent.Left)
+                    tree.Left.parent = curTree;
+                    tree.Right.parent = curTree;
+                    curTree.parent = tree.parent;
+                    if (tree == tree.parent.Left)
                     {
-                        tree.Parent.Left = curTree;
+                        tree.parent.Left = curTree;
                     }
-                    else if (tree == tree.Parent.Right)
+                    else if (tree == tree.parent.Right)
                     {
-                        tree.Parent.Right = curTree;
+                        tree.parent.Right = curTree;
                     }
 
                     return true;
@@ -220,6 +229,15 @@ namespace BinaryTree
                 values.Add(node.Data);
                 PreOrderTraversal(node.Left, values);
                 PreOrderTraversal(node.Right, values);
+            }
+        }
+
+        public void Serialize()
+        {
+            XmlSerializer stream = new XmlSerializer(typeof(BinaryTree<T>));
+            using (FileStream fs = new FileStream(@"D:\Mega\Learning\Semester5\Training.by\Tasks\Task5\tree.xml", FileMode.OpenOrCreate))
+            {
+                stream.Serialize(fs, this);
             }
         }
     }
