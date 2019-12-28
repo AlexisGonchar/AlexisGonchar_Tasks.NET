@@ -235,5 +235,45 @@ namespace BinaryTree
                 Right = tree.Right;
             }
         }
+
+        public void BalanceTree()
+        {
+            List<BinaryTree<T>> listOfNodes = new List<BinaryTree<T>>();
+            
+            FillList(this, listOfNodes);
+            
+            int count = listOfNodes.Count;
+            
+            BalanceTree(0, count - 1, listOfNodes);
+
+            Data = Right.Data;
+            Left = Right.Left;
+            Right = Right.Right;
+        }
+
+        private void BalanceTree(int minSublist, int maxSublist, List<BinaryTree<T>> list)
+        {
+            if (minSublist <= maxSublist)
+            {
+                int middleNode = (int)Math.Ceiling(((double)minSublist + maxSublist) / 2);
+                
+                Add(list[middleNode].Data);
+                
+                BalanceTree(minSublist, middleNode - 1, list);
+                BalanceTree(middleNode + 1, maxSublist, list);
+            }
+        }
+
+        private void FillList(BinaryTree<T> node, List<BinaryTree<T>> list)
+        {
+            if (node != null)
+            {
+                FillList(node.Left, list);
+                
+                list.Add(node);
+                
+                FillList(node.Right, list);
+            }
+        }
     }
 }

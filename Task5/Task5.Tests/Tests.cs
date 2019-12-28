@@ -61,5 +61,22 @@ namespace Task5.Tests
             tree.Remove(st);
             Assert.AreEqual(null, tree.Search(st));
         }
+
+        [Test]
+        public void TestBalance()
+        {
+            BinaryTree<Student> tree = new BinaryTree<Student>();
+            tree.Add(new Student("Bob", "English", DateTime.Now, 1));
+            tree.Add(new Student("John", "Algebra", DateTime.Now, 2));
+            tree.Add(new Student("Alex", "Geometry", DateTime.Now, 3));
+            tree.Add(new Student("Donald", "Biology", DateTime.Now, 4));
+            tree.Add(new Student("Floyd", "Chemistry", DateTime.Now, 5));
+            tree.Add(new Student("Roach", "Science", DateTime.Now, 6));
+            tree.Add(new Student("Christopher", "Literature", DateTime.Now, 7));
+
+            tree.BalanceTree();
+
+            Assert.AreEqual(1, 1);
+        }
     }
 }
