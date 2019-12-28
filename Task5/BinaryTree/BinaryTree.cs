@@ -215,29 +215,24 @@ namespace BinaryTree
             }
         }
 
-        public List<T> PreOrderTraversal()
+        public void Serialize(string path)
         {
-            List<T> values = new List<T>();
-            PreOrderTraversal(this, values);
-            return values;
-        }
-
-        private void PreOrderTraversal(BinaryTree<T> node, List<T> values)
-        {
-            if (node != null)
+            XmlSerializer stream = new XmlSerializer(typeof(BinaryTree<T>));
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {
-                values.Add(node.Data);
-                PreOrderTraversal(node.Left, values);
-                PreOrderTraversal(node.Right, values);
+                stream.Serialize(fs, this);
             }
         }
 
-        public void Serialize()
+        public void Deserialize(string path)
         {
             XmlSerializer stream = new XmlSerializer(typeof(BinaryTree<T>));
-            using (FileStream fs = new FileStream(@"D:\Mega\Learning\Semester5\Training.by\Tasks\Task5\tree.xml", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {
-                stream.Serialize(fs, this);
+                BinaryTree<T> tree = (BinaryTree<T>)stream.Deserialize(fs);
+                Data = tree.Data;
+                Left = tree.Left;
+                Right = tree.Right;
             }
         }
     }
