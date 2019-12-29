@@ -282,9 +282,7 @@ namespace BinaryTree
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {
                 BinaryTree<T> tree = (BinaryTree<T>)stream.Deserialize(fs);
-                Data = tree.Data;
-                Left = tree.Left;
-                Right = tree.Right;
+                ReplaceTree(tree);
             }
         }
 
@@ -293,6 +291,7 @@ namespace BinaryTree
         /// </summary>
         public void BalanceTree()
         {
+            BinaryTree<T> newTree = new BinaryTree<T>();
             List<BinaryTree<T>> listOfNodes = new List<BinaryTree<T>>();
             
             FillList(this, listOfNodes);
@@ -301,21 +300,28 @@ namespace BinaryTree
 
             int count = listOfNodes.Count;
 
-            Data = default(T);
+            BalanceTree(0, count - 1, listOfNodes, newTree);
 
-            BalanceTree(0, count - 1, listOfNodes);
+            ReplaceTree(newTree);
         }
 
-        private void BalanceTree(int minSublist, int maxSublist, List<BinaryTree<T>> list)
+        private void ReplaceTree(BinaryTree<T> tree)
+        {
+            Data = tree.Data;
+            Left = tree.Left;
+            Right = tree.Right;
+        }
+
+        private void BalanceTree(int minSublist, int maxSublist, List<BinaryTree<T>> list, BinaryTree<T> newTree)
         {
             if (minSublist <= maxSublist)
             {
                 int middleNode = (int)Math.Ceiling(((double)minSublist + maxSublist) / 2);
                 
-                Add(list[middleNode].Data);
+                newTree.Add(list[middleNode].Data);
                 
-                BalanceTree(minSublist, middleNode - 1, list);
-                BalanceTree(middleNode + 1, maxSublist, list);
+                BalanceTree(minSublist, middleNode - 1, list, newTree);
+                BalanceTree(middleNode + 1, maxSublist, list, newTree);
             }
         }
 
