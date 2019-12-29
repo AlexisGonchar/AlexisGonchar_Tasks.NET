@@ -300,12 +300,10 @@ namespace BinaryTree
             RemoveChildNodes(listOfNodes);
 
             int count = listOfNodes.Count;
-            
-            BalanceTree(0, count - 1, listOfNodes);
 
-            Data = Right.Data;
-            Left = Right.Left;
-            Right = Right.Right;
+            Data = default(T);
+
+            BalanceTree(0, count - 1, listOfNodes);
         }
 
         private void BalanceTree(int minSublist, int maxSublist, List<BinaryTree<T>> list)

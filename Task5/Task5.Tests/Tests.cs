@@ -142,5 +142,25 @@ namespace Task5.Tests
 
             Assert.AreEqual(tree.Left.Right.Data.Mark, 3);
         }
+
+        /// <summary>
+        /// Method for testing binary tree balancing.
+        /// </summary>
+        [Test]
+        public void TestBalance2()
+        {
+            BinaryTree<Student> tree = new BinaryTree<Student>();
+            tree.Add(new Student("Bob", "English", DateTime.Now, 7));
+            tree.Add(new Student("John", "Algebra", DateTime.Now, 6));
+            tree.Add(new Student("Alex", "Geometry", DateTime.Now, 5));
+            tree.Add(new Student("Donald", "Biology", DateTime.Now, 4));
+            tree.Add(new Student("Floyd", "Chemistry", DateTime.Now, 3));
+            tree.Add(new Student("Roach", "Science", DateTime.Now, 2));
+            tree.Add(new Student("Christopher", "Literature", DateTime.Now, 1));
+
+            tree.BalanceTree();
+
+            Assert.AreEqual(tree.Left.Right.Data.Mark, 3);
+        }
     }
 }
