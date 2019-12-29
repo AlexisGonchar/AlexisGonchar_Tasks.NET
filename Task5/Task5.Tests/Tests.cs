@@ -9,9 +9,16 @@ using StudentLib;
 
 namespace Task5.Tests
 {
+    /// <summary>
+    /// Class for testing classes.
+    /// </summary>
     [TestFixture]
     public class Tests
     {
+        /// <summary>
+        /// Method for creating a binary tree.
+        /// </summary>
+        /// <returns></returns>
         public BinaryTree<Student> InitTree()
         {
             BinaryTree<Student> tree = new BinaryTree<Student>();
@@ -25,6 +32,51 @@ namespace Task5.Tests
             return tree;
         }
 
+        /// <summary>
+        /// Method for testing binary tree with integer.
+        /// </summary>
+        [Test]
+        public void TestAddInt()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+            
+            tree.Add(6);
+            var node = tree.Search(6);
+
+            Assert.AreEqual(node.Data, 6);
+        }
+
+        /// <summary>
+        /// Method for testing binary tree with double.
+        /// </summary>
+        [Test]
+        public void TestAddDouble()
+        {
+            BinaryTree<double> tree = new BinaryTree<double>();
+
+            tree.Add(6.5);
+            var node = tree.Search(6.5);
+
+            Assert.AreEqual(node.Data, 6.5);
+        }
+
+        /// <summary>
+        /// Method for testing binary tree with string.
+        /// </summary>
+        [Test]
+        public void TestAddString()
+        {
+            BinaryTree<string> tree = new BinaryTree<string>();
+
+            tree.Add("Jeronimo");
+            var node = tree.Search("Jeronimo");
+
+            Assert.AreEqual(node.Data, "Jeronimo");
+        }
+
+        /// <summary>
+        /// Method for testing adding data to a binary tree.
+        /// </summary>
         [Test]
         public void TestAdd()
         {
@@ -32,6 +84,9 @@ namespace Task5.Tests
             Assert.AreEqual(tree.Left.Left.Data.Mark, 4);
         }
 
+        /// <summary>
+        /// Method for testing write and read binary tree.
+        /// </summary>
         [Test]
         public void TestDeserialize()
         {
@@ -42,6 +97,9 @@ namespace Task5.Tests
             Assert.AreEqual(tree1.Left.Left.Data.Mark, 4);
         }
 
+        /// <summary>
+        /// Method for testing data search in a binary tree.
+        /// </summary>
         [Test]
         public void TestSearch()
         {
@@ -52,6 +110,9 @@ namespace Task5.Tests
             Assert.AreEqual(st.CompareTo(st1), 0);
         }
 
+        /// <summary>
+        /// Method for testing data deletion from a binary tree.
+        /// </summary>
         [Test]
         public void TestRemove()
         {
@@ -62,6 +123,9 @@ namespace Task5.Tests
             Assert.AreEqual(null, tree.Search(st));
         }
 
+        /// <summary>
+        /// Method for testing binary tree balancing.
+        /// </summary>
         [Test]
         public void TestBalance()
         {
@@ -76,7 +140,7 @@ namespace Task5.Tests
 
             tree.BalanceTree();
 
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(tree.Left.Right.Data.Mark, 3);
         }
     }
 }

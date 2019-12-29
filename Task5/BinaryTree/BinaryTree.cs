@@ -8,27 +8,52 @@ using System.Xml.Serialization;
 
 namespace BinaryTree
 {
+    /// <summary>
+    /// Сlass describing a binary tree node.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
     public class BinaryTree<T> : IComparable
         where T : IComparable
     {
+        /// <summary>
+        /// The node data.
+        /// </summary>
         public T Data { get; set; }
+        /// <summary>
+        /// The left node.
+        /// </summary>
         public BinaryTree<T> Left { get; set;  }
+        /// <summary>
+        /// The right node.
+        /// </summary>
         public BinaryTree<T> Right { get; set; }
         
         private BinaryTree<T> parent;
 
+        /// <summary>
+        /// Initializes a new instance of the BinaryTree class.
+        /// </summary>
         public BinaryTree()
         {
 
         }
 
+        /// <summary>
+        /// nitializes a new instance of the BinaryTree class.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="parent"></param>
         public BinaryTree(T data, BinaryTree<T> parent = null)
         {
             Data = data;
             this.parent = parent;
         }
 
+        /// <summary>
+        /// Adds the data.
+        /// </summary>
+        /// <param name="data"></param>
         public void Add(T data)
         {
             if(Data == null)
@@ -73,20 +98,33 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Search the node.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public BinaryTree<T> Search(T data)
         {
             return Search(this, data);
         }
 
+        /// <summary>
+        /// Remove the data.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public bool Remove(T data)
         {
+            //Check if this node exists
             BinaryTree<T> tree = Search(data);
             if (tree == null)
             {
+                //If the node does not exist, return false
                 return false;
             }
             BinaryTree<T> curTree;
 
+            //If remove the root
             if (tree == this)
             {
                 if (tree.Right != null)
@@ -106,6 +144,7 @@ namespace BinaryTree
                 return true;
             }
 
+            //Sides removal
             if (tree.Left == null && tree.Right == null && tree.parent != null)
             {
                 if (tree == tree.parent.Left)
@@ -117,10 +156,10 @@ namespace BinaryTree
                 return true;
             }
             
-            
+            //Removal of a node having a left subtree, but not having a right subtree
             if (tree.Left != null && tree.Right == null)
             {
-                //Меняем родителя
+                //Change parent
                 tree.Left.parent = tree.parent;
                 if (tree == tree.parent.Left)
                 {
@@ -133,10 +172,10 @@ namespace BinaryTree
                 return true;
             }
 
-            //Удаление узла, имеющего правое поддерево, но не имеющее левого поддерева
+            //Removal of a node having a right subtree, but not having a left subtree
             if (tree.Left == null && tree.Right != null)
             {
-                //Меняем родителя
+                //Change parent
                 tree.Right.parent = tree.parent;
                 if (tree == tree.parent.Left)
                 {
@@ -149,7 +188,7 @@ namespace BinaryTree
                 return true;
             }
 
-            //Удаляем узел, имеющий поддеревья с обеих сторон
+            //Removal of a node having subtrees on both sides
             if (tree.Right != null && tree.Left != null)
             {
                 curTree = tree.Right;
@@ -159,7 +198,7 @@ namespace BinaryTree
                     curTree = curTree.Left;
                 }
 
-                //Если самый левый элемент является первым потомком
+                //If the leftmost element is the first child
                 if (curTree.parent == tree)
                 {
                     curTree.Left = tree.Left;
@@ -175,7 +214,7 @@ namespace BinaryTree
                     }
                     return true;
                 }
-                //Если самый левый элемент НЕ является первым потомком
+                //If the leftmost element is not the first child
                 else
                 {
                     if (curTree.Right != null)
@@ -203,6 +242,11 @@ namespace BinaryTree
             return false;
         }
 
+        /// <summary>
+        /// Nodes Object Comparison.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj is BinaryTree<T>)
@@ -215,6 +259,10 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Serialization of binary tree in XML.
+        /// </summary>
+        /// <param name="path"></param>
         public void Serialize(string path)
         {
             XmlSerializer stream = new XmlSerializer(typeof(BinaryTree<T>));
@@ -224,6 +272,10 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// XML binary tree deserialization.
+        /// </summary>
+        /// <param name="path"></param>
         public void Deserialize(string path)
         {
             XmlSerializer stream = new XmlSerializer(typeof(BinaryTree<T>));
@@ -236,12 +288,17 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Binary tree balancing.
+        /// </summary>
         public void BalanceTree()
         {
             List<BinaryTree<T>> listOfNodes = new List<BinaryTree<T>>();
             
             FillList(this, listOfNodes);
-            
+
+            RemoveChildNodes(listOfNodes);
+
             int count = listOfNodes.Count;
             
             BalanceTree(0, count - 1, listOfNodes);
@@ -261,6 +318,15 @@ namespace BinaryTree
                 
                 BalanceTree(minSublist, middleNode - 1, list);
                 BalanceTree(middleNode + 1, maxSublist, list);
+            }
+        }
+
+        private void RemoveChildNodes(List<BinaryTree<T>> listOfNodes)
+        {
+            foreach (BinaryTree<T> node in listOfNodes)
+            {
+                node.Left = null;
+                node.Right = null;
             }
         }
 

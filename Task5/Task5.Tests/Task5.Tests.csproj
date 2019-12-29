@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Task5.Tests.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,9 +60,9 @@
       <Project>{de86b463-6097-48d7-9ad5-e424903bda97}</Project>
       <Name>BinaryTree</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Student Lib\Student Lib.csproj">
+    <ProjectReference Include="..\Student Lib\StudentLib.csproj">
       <Project>{a0f7cce1-67e1-447b-8bd5-0b71682f9143}</Project>
-      <Name>Student Lib</Name>
+      <Name>StudentLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
