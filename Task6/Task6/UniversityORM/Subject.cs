@@ -30,5 +30,14 @@ namespace UniversityORM
             Id = id;
             SubjectName = subjectName;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the Subject class.
+        /// </summary>
+        /// <param name="subjectName"></param>
+        public Subject(string subjectName)
+        {
+            SubjectName = subjectName;
+        }
     }
 }

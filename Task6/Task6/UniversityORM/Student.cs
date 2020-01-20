@@ -61,6 +61,25 @@ namespace UniversityORM
             DateOfBirth = dateOfBirth;
             IdGroup = idGroup;
         }
+        /// <summary>
+        /// Initializes a new instance of the Student class.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="middleName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="gender"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="idGroup"></param>
+        public Student(string firstName, string middleName, string lastName,
+            string gender, DateTime dateOfBirth, int idGroup)
+        {
+            FirstName = firstName;
+            MiddleName = middleName;
+            LastName = lastName;
+            Gender = gender;
+            DateOfBirth = dateOfBirth;
+            IdGroup = idGroup;
+        }
 
     }
 }

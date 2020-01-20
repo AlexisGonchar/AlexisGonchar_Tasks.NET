@@ -42,5 +42,18 @@ namespace UniversityORM
             IdStudent = idStudent;
             MarkForExam = markForExam;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the Mark class.
+        /// </summary>
+        /// <param name="idExam"></param>
+        /// <param name="idStudent"></param>
+        /// <param name="markForExam"></param>
+        public Mark(int idExam, int idStudent, int markForExam)
+        {
+            IdExam = idExam;
+            IdStudent = idStudent;
+            MarkForExam = markForExam;
+        }
     }
 }

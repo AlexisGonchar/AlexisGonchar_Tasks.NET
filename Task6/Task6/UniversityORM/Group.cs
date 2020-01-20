@@ -29,6 +29,15 @@ namespace UniversityORM
         {
             Id = id;
             GroupName = groupName;
-        } 
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Group class.
+        /// </summary>
+        /// <param name="groupName"></param>
+        public Group(string groupName)
+        {
+            GroupName = groupName;
+        }
     }
 }

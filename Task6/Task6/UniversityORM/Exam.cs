@@ -37,12 +37,27 @@ namespace UniversityORM
         /// </summary>
         /// <param name="id"></param>
         /// <param name="date"></param>
-        /// <param name="idSubjects"></param>
-        /// <param name="idGroups"></param>
+        /// <param name="idSubject"></param>
+        /// <param name="idGroup"></param>
         /// <param name="type"></param>
         public Exam(int id, DateTime date, int idSubject, int idGroup, string type)
         {
             Id = id;
+            Date = date;
+            IdSubject = idSubject;
+            IdGroup = idGroup;
+            Type = type;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Exam class.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="idSubject"></param>
+        /// <param name="idGroup"></param>
+        /// <param name="type"></param>
+        public Exam(DateTime date, int idSubject, int idGroup, string type)
+        {
             Date = date;
             IdSubject = idSubject;
             IdGroup = idGroup;
