@@ -61,6 +61,21 @@ CREATE TABLE `universitydb`.`marks` (
     REFERENCES `universitydb`.`students` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+DROP TRIGGER IF EXISTS `universitydb`.`marks_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `universitydb`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `universitydb`.`marks_BEFORE_INSERT` BEFORE INSERT ON `marks` FOR EACH ROW
+BEGIN
+	declare amount int;
+    set @amount = 0;
+    set @amount = (select count(idSchedule) from marks where idStudents = new.idStudents and idSchedule = new.idSchedule);
+    if(@amount > 0) then
+     signal sqlstate '02000' set message_text = 'This student has already passed this exam.';
+	end if;
+END$$
+DELIMITER ;
 
 
 
