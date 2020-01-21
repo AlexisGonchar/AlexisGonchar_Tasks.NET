@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Exam.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Mark.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Subject.cs" />

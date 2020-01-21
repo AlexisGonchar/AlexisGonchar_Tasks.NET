@@ -18,7 +18,7 @@ namespace UniversityORM
         /// <summary>
         /// Group name.
         /// </summary>
-        public string GroupName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Group class.
@@ -28,7 +28,7 @@ namespace UniversityORM
         public Group(int id, string groupName)
         {
             Id = id;
-            GroupName = groupName;
+            Name = groupName;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace UniversityORM
         /// <param name="groupName"></param>
         public Group(string groupName)
         {
-            GroupName = groupName;
+            Name = groupName;
         }
     }
 }

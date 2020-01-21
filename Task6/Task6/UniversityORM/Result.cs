@@ -9,20 +9,20 @@ namespace UniversityORM
     /// <summary>
     /// Mark class.
     /// </summary>
-    public class Mark
+    public class Result
     {
         /// <summary>
         /// Mark identification number.
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// Exam identification number.
-        /// </summary>
-        public int IdExam { get; set; }
-        /// <summary>
         /// Student identification number.
         /// </summary>
         public int IdStudent { get; set; }
+        /// <summary>
+        /// Exam identification number.
+        /// </summary>
+        public int IdExam { get; set; }
         /// <summary>
         /// Mark for the exam.
         /// </summary>
@@ -35,7 +35,7 @@ namespace UniversityORM
         /// <param name="idExam"></param>
         /// <param name="idStudent"></param>
         /// <param name="markForExam"></param>
-        public Mark(int id, int idExam, int idStudent, int markForExam)
+        public Result(int id, int idStudent, int idExam, int markForExam)
         {
             Id = id;
             IdExam = idExam;
@@ -49,7 +49,7 @@ namespace UniversityORM
         /// <param name="idExam"></param>
         /// <param name="idStudent"></param>
         /// <param name="markForExam"></param>
-        public Mark(int idExam, int idStudent, int markForExam)
+        public Result(int idStudent, int idExam, int markForExam)
         {
             IdExam = idExam;
             IdStudent = idStudent;

@@ -20,13 +20,13 @@ namespace UniversityORM
         /// </summary>
         public DateTime Date { get; set; }
         /// <summary>
-        /// Identification number of the subject for which the exam will be conducted.
-        /// </summary>
-        public int IdSubject { get; set; }
-        /// <summary>
         /// Identification number of the group where the exam will be held
         /// </summary>
         public int IdGroup { get; set; }
+        /// <summary>
+        /// Identification number of the subject for which the exam will be conducted.
+        /// </summary>
+        public int IdSubject { get; set; }
         /// <summary>
         /// Exam type.
         /// </summary>
@@ -40,7 +40,7 @@ namespace UniversityORM
         /// <param name="idSubject"></param>
         /// <param name="idGroup"></param>
         /// <param name="type"></param>
-        public Exam(int id, DateTime date, int idSubject, int idGroup, string type)
+        public Exam(int id, DateTime date, int idGroup, int idSubject, string type)
         {
             Id = id;
             Date = date;
@@ -56,7 +56,7 @@ namespace UniversityORM
         /// <param name="idSubject"></param>
         /// <param name="idGroup"></param>
         /// <param name="type"></param>
-        public Exam(DateTime date, int idSubject, int idGroup, string type)
+        public Exam(DateTime date, int idGroup, int idSubject, string type)
         {
             Date = date;
             IdSubject = idSubject;

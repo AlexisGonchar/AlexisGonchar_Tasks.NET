@@ -18,7 +18,7 @@ namespace UniversityORM
         /// <summary>
         /// Subject name.
         /// </summary>
-        public string SubjectName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Subject class.
@@ -28,7 +28,7 @@ namespace UniversityORM
         public Subject(int id, string subjectName)
         {
             Id = id;
-            SubjectName = subjectName;
+            Name = subjectName;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace UniversityORM
         /// <param name="subjectName"></param>
         public Subject(string subjectName)
         {
-            SubjectName = subjectName;
+            Name = subjectName;
         }
     }
 }
