@@ -6,12 +6,64 @@ using System.Threading.Tasks;
 
 namespace UniversityDAO
 {
-    public abstract class DaoFactory
+    public class DaoFactory : Factory
     {
-        public abstract GroupDao GetGroupDao();
-        public abstract SubjectDao GetSubjectDao();
-        public abstract StudentDao GetStudentDao();
-        public abstract ExamDao GetExamDao();
-        public abstract ResultDao GetResultDao();
+        private static DaoFactory instance;
+        private static GroupDao groupDao;
+        private static SubjectDao subjectDao;
+        private static StudentDao studentDao;
+        private static ExamDao examDao;
+        private static ResultDao resultDao;
+        private static string connString;
+
+        private DaoFactory()
+        {
+
+        }
+
+        public static DaoFactory GetInstance(string connectionString)
+        {
+            if (instance == null)
+            {
+                instance = new DaoFactory();
+                connString = connectionString;
+            }
+            return instance;
+        }
+
+        public override ExamDao GetExamDao()
+        {
+            if (examDao == null)
+                examDao = new ExamDao(connString);
+            return examDao;
+        }
+
+        public override GroupDao GetGroupDao()
+        {
+            if (groupDao == null)
+                groupDao = new GroupDao(connString);
+            return groupDao;
+        }
+
+        public override ResultDao GetResultDao()
+        {
+            if (resultDao == null)
+                resultDao = new ResultDao(connString);
+            return resultDao;
+        }
+
+        public override StudentDao GetStudentDao()
+        {
+            if (studentDao == null)
+                studentDao = new StudentDao(connString);
+            return studentDao;
+        }
+
+        public override SubjectDao GetSubjectDao()
+        {
+            if(subjectDao == null)
+                subjectDao = new SubjectDao(connString);
+            return subjectDao;
+        }
     }
 }
