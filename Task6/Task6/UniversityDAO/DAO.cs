@@ -22,7 +22,7 @@ namespace UniversityDAO
             {
                 Type type = obj.GetType();
                 PropertyInfo[] fields = type.GetProperties();
-                string table = type.Name.ToLower() + "s";
+                string table = type.Name + "s";
 
                 conn.Open();
 
@@ -55,9 +55,24 @@ namespace UniversityDAO
             }
         }
 
-        public bool Delete(int id)
+        public bool DeleteById(int id)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                Type type = typeof(T);
+                string table = type.Name + "s";
+
+                conn.Open();
+
+                string query = $"DELETE FROM {table} WHERE id=@id";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+
+                int answer = command.ExecuteNonQuery();
+
+                return (answer > 0) ? true : false;
+            }
         }
 
         public T Read(int id)

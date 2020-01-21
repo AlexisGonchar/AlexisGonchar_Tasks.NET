@@ -13,11 +13,19 @@ namespace Task6.Tests
     public class Tests
     {
         [Test]
-        public void Test()
+        public void TestInsert()
         {
             string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
-            GroupDao group = new GroupDao(connString);
-            group.Create(new Group("ИТП-31"));
+            GroupDao groupDao = new GroupDao(connString);
+            groupDao.Create(new Group("ИТП-31"));            
+        }
+
+        [Test]
+        public void TestDelete()
+        {
+            string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
+            GroupDao groupDao = new GroupDao(connString);
+            groupDao.DeleteById(2);
         }
     }
 }

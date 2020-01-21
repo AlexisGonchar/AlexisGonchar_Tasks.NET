@@ -27,7 +27,7 @@ ADD CONSTRAINT `fk_students_groups`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
-  CREATE TABLE `universitydb`.`exams` (
+  CREATE TABLE `universitydexamsb`.`exams` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
   `idGroup` INT NOT NULL,

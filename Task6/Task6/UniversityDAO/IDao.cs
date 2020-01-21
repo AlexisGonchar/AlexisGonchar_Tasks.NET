@@ -12,7 +12,7 @@ namespace UniversityDAO
 
         bool Update(T obj);
 
-        bool Delete(int id);
+        bool DeleteById(int id);
 
         T Read(int id);
 
