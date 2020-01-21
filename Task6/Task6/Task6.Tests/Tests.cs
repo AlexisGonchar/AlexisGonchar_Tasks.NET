@@ -12,7 +12,7 @@ namespace Task6.Tests
     [TestFixture]
     public class Tests
     {
-        [Test]
+        //[Test]
         public void TestInsert()
         {
             string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
@@ -20,12 +20,19 @@ namespace Task6.Tests
             groupDao.Create(new Group("ИТП-31"));            
         }
 
-        [Test]
+        //[Test]
         public void TestDelete()
         {
             string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
             GroupDao groupDao = new GroupDao(connString);
             groupDao.DeleteById(2);
+        }
+
+        [Test]
+        public void InitializationTables()
+        {
+            string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
+            Initialization.InitializeTables(connString);
         }
     }
 }

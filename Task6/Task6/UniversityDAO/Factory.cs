@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UniversityDAO
 {
-    public abstract class DaoFactory
+    public abstract class Factory
     {
         public abstract GroupDao GetGroupDao();
         public abstract SubjectDao GetSubjectDao();

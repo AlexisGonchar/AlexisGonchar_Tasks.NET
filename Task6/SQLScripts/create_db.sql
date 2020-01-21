@@ -1,3 +1,4 @@
+DROP DATABASE `universitydb`;
 CREATE SCHEMA `universitydb` ;
 
 CREATE TABLE `universitydb`.`groups` (
@@ -27,9 +28,9 @@ ADD CONSTRAINT `fk_students_groups`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
-  CREATE TABLE `universitydexamsb`.`exams` (
+  CREATE TABLE `universitydb`.`exams` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATETIME NOT NULL,
+  `date` DATE NOT NULL,
   `idGroup` INT NOT NULL,
   `idSubject` INT NOT NULL,
   `type` VARCHAR(10) NOT NULL,
