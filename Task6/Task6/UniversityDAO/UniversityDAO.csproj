@@ -64,9 +64,13 @@
   <ItemGroup>
     <Compile Include="Dao.cs" />
     <Compile Include="DaoFactory.cs" />
+    <Compile Include="ExamDao.cs" />
     <Compile Include="GroupDao.cs" />
     <Compile Include="IDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultDao.cs" />
+    <Compile Include="StudentDao.cs" />
+    <Compile Include="SubjectDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
