@@ -39,5 +39,20 @@ namespace UniversityORM
         {
             Name = groupName;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Group group = obj as Group;
+            if(group == null)
+                return false;
+            return Name.Equals(group.Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() * 5;
+        }
     }
 }

@@ -55,5 +55,21 @@ namespace UniversityORM
             IdStudent = idStudent;
             Mark = markForExam;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Result result = obj as Result;
+            if (result == null)
+                return false;
+            return (IdExam.Equals(result.IdExam) && IdStudent.Equals(result.IdStudent) &&
+                Mark.Equals(result.Mark));
+        }
+
+        public override int GetHashCode()
+        {
+            return Mark.GetHashCode() * 4 + IdExam.GetHashCode() + IdStudent.GetHashCode();
+        }
     }
 }

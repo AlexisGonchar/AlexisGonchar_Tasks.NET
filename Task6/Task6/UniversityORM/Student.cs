@@ -81,5 +81,21 @@ namespace UniversityORM
             IdGroup = idGroup;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Student student = obj as Student;
+            if (student == null)
+                return false;
+            return (FirstName.Equals(student.FirstName) && LastName.Equals(student.LastName) &&
+                MiddleName.Equals(student.MiddleName) && Gender.Equals(student.Gender) &&
+                DateOfBirth.Equals(student.DateOfBirth) && IdGroup.Equals(student.IdGroup));
+        }
+
+        public override int GetHashCode()
+        {
+            return FirstName.GetHashCode() * 5 + LastName.GetHashCode() + DateOfBirth.GetHashCode();
+        }
     }
 }

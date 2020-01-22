@@ -63,5 +63,21 @@ namespace UniversityORM
             IdGroup = idGroup;
             Type = type;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Exam exam = obj as Exam;
+            if (exam == null)
+                return false;
+            return (Date.Equals(exam.Date) && IdSubject.Equals(exam.IdSubject) &&
+                IdGroup.Equals(exam.IdGroup) && Type.Equals(exam.Type));
+        }
+
+        public override int GetHashCode()
+        {
+            return Date.GetHashCode() * 4 + IdSubject.GetHashCode() + Type.GetHashCode();
+        }
     }
 }

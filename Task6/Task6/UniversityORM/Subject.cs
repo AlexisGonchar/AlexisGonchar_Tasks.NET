@@ -39,5 +39,20 @@ namespace UniversityORM
         {
             Name = subjectName;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Subject subject = obj as Subject;
+            if (subject == null)
+                return false;
+            return Name.Equals(subject.Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() * 4;
+        }
     }
 }
