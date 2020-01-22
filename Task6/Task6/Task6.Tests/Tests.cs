@@ -44,5 +44,22 @@ namespace Task6.Tests
             Group group = groupDao.Read(1);
             Assert.AreEqual("ИТ-11", group.Name);
         }
+
+        [Test]
+        public void TestReadAll()
+        {
+            GroupDao groupDao = factory.GetGroupDao();
+            List<Group> groups = groupDao.ReadAll();
+            Assert.AreEqual("ИТ-12", groups[1].Name);
+        }
+
+        [Test]
+        public void TestUpdate()
+        {
+            GroupDao groupDao = factory.GetGroupDao();
+            groupDao.Update(new Group("ИТ-21"), 3);
+            Group group = groupDao.Read(3);
+            Assert.AreEqual("ИТ-21", group.Name);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace UniversityDAO
     {
         bool Create(T obj);
 
-        bool Update(T obj);
+        bool Update(T obj, int id);
 
         bool DeleteById(int id);
 
