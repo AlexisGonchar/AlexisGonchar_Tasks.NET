@@ -74,7 +74,44 @@ namespace UniversityDAO
 
         public T Read(int id)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection conn = new MySqlConnection(connString))
+            {
+                Type type = typeof(T);
+                PropertyInfo[] fields = type.GetProperties();
+                string table = type.Name + "s";
+
+                conn.Open();
+
+                string query = $"SELECT * FROM {table} WHERE id=@id";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    object[] par = new object[reader.FieldCount];
+
+                    while (reader.Read())
+                    {
+                        if (reader.FieldCount != fields.Length)
+                        {
+                            throw new Exception("The number of type parameters and reader do not match.");
+                        }
+                        
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            par[i] = reader.GetValue(i);
+                        }
+                    }
+                    return GetObject(par);
+                }
+                else
+                {
+                    throw new ArgumentException("Id not found.");
+                }
+            }
         }
 
         public List<T> ReadAll()
@@ -85,6 +122,11 @@ namespace UniversityDAO
         public bool Update(T obj)
         {
             throw new NotImplementedException();
+        }
+
+        protected T GetObject(params object[] args)
+        {
+            return (T)Activator.CreateInstance(typeof(T), args);
         }
     }
 }

@@ -32,14 +32,21 @@ namespace Task6.Tests
             "Основы дизайна", "Основы маркетинга", "Экономика", "Химия" };
         private static string[] groupNames = { "ИТ-", "ИТИ-", "ИТП-", "ИП-", "ИС-", "ПЭ-", "Э-"};
 
+        private static int countOfCourses = 4;
+        private static int countOfSubgroups = 2;
+        private static int countOfExams = 3;
+        private static int countOfSessions = 2;
+        private static int countOfStudents = 10;
+
         public static void InitializeTables(string connString)
         {
             factory = DaoFactory.GetInstance(connString);
             rand = new Random();
             InitialiazeGroups();
             InitialiazeSubjects();
-            //InitializeStudents();
+            InitializeStudents();
             InitializeExams();
+            InitializeResults();
         }
 
         private static void InitialiazeGroups()
@@ -47,9 +54,9 @@ namespace Task6.Tests
             GroupDao groupDao = factory.GetGroupDao();
             foreach (string groupName in groupNames)
             {
-                for(int i = 1; i <= 4; i++)
+                for(int i = 1; i <= countOfCourses; i++)
                 {
-                    for(int j = 1; j <= 3; j++)
+                    for(int j = 1; j <= countOfSubgroups; j++)
                     {
                         string name = groupName + i + j;
                         Group group = new Group(name);
@@ -74,9 +81,9 @@ namespace Task6.Tests
             StudentDao studentDao = factory.GetStudentDao();
             DateTime from = new DateTime(1990, 1, 1);
             DateTime to = new DateTime(2002, 12, 31);
-            for (int i = 1; i <= groupNames.Length*12; i++)
+            for (int i = 1; i <= groupNames.Length*countOfCourses*countOfSubgroups; i++)
             {
-                for(int j = 0; j < 20; j++)
+                for(int j = 0; j < countOfStudents; j++)
                 {
                     string gender = rand.Next(0, 2) == 0 ? "Мужской" : "Жеский";
                     string firstName = "";
@@ -102,12 +109,12 @@ namespace Task6.Tests
         {
             ExamDao examDao = factory.GetExamDao();
             DateTime from = new DateTime(2018, 1, 8);
-            for(int sessions = 0; sessions < 3; sessions++)
+            for(int sessions = 0; sessions < countOfSessions; sessions++)
             {
-                for (int groupId = 1; groupId <= groupNames.Length * 12; groupId++)
+                for (int groupId = 1; groupId <= groupNames.Length * countOfCourses * countOfSubgroups; groupId++)
                 {
-                    int subjectStart = rand.Next(1, subjectNames.Length - 5);
-                    for (int exNum = 0; exNum <= 4; exNum++)
+                    int subjectStart = rand.Next(1, subjectNames.Length - countOfExams);
+                    for (int exNum = 0; exNum < countOfExams; exNum++)
                     {
                         string type = rand.Next(0, 2) == 0 ? "Зачёт" : "Экзамен";
                         Exam exam = new Exam(from.AddDays(exNum * 4), groupId, subjectStart + exNum, type);
@@ -115,6 +122,29 @@ namespace Task6.Tests
                     }
                 }
                 from = from.AddMonths(6);
+            }
+        }
+
+        private static void InitializeResults()
+        {
+            ResultDao resultDao = factory.GetResultDao();
+            int studentId = 1;
+            int groupsCount = groupNames.Length * countOfCourses * countOfSubgroups;
+            for (int groupId = 1; groupId <= groupsCount; groupId++)
+            {
+                for (int student = 0; student < countOfStudents; student++)
+                {
+                    for (int examId = groupId*countOfExams-(countOfExams-1); examId <= countOfExams*groupsCount*countOfSessions; examId += countOfExams * groupsCount)
+                    {
+                        for (int exNum = 0; exNum < countOfExams; exNum++)
+                        {
+                            int mark = rand.Next(1, 11);
+                            Result result = new Result(studentId, examId+exNum, mark);
+                            resultDao.Create(result);
+                        }
+                    }
+                    studentId++;
+                }
             }
         }
 

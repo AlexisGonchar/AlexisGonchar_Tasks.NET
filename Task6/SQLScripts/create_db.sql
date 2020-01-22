@@ -67,7 +67,7 @@ DROP TRIGGER IF EXISTS `universitydb`.`results_BEFORE_INSERT`;
 
 DELIMITER $$
 USE `universitydb`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `universitydb`.`mresults_BEFORE_INSERT` BEFORE INSERT ON `results` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `universitydb`.`results_BEFORE_INSERT` BEFORE INSERT ON `results` FOR EACH ROW
 BEGIN
 	declare amount int;
     set @amount = 0;

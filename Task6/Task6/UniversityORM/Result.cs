@@ -26,7 +26,7 @@ namespace UniversityORM
         /// <summary>
         /// Mark for the exam.
         /// </summary>
-        public int MarkForExam { get; set; }
+        public int Mark { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Mark class.
@@ -40,7 +40,7 @@ namespace UniversityORM
             Id = id;
             IdExam = idExam;
             IdStudent = idStudent;
-            MarkForExam = markForExam;
+            Mark = markForExam;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace UniversityORM
         {
             IdExam = idExam;
             IdStudent = idStudent;
-            MarkForExam = markForExam;
+            Mark = markForExam;
         }
     }
 }
