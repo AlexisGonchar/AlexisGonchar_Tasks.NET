@@ -40,6 +40,11 @@ namespace UniversityORM
             Name = groupName;
         }
 
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="obj">The object to compare with the current object.</param>
+        /// <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -50,6 +55,10 @@ namespace UniversityORM
             return Name.Equals(group.Name);
         }
 
+        /// <summary>
+        /// Get a hash code for the current object.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return Name.GetHashCode() * 5;

@@ -5,14 +5,28 @@ using System.Reflection;
 
 namespace UniversityDAO
 {
+    /// <summary>
+    /// Class for working with tables.
+    /// </summary>
+    /// <typeparam name="T">Universal parameter accepting any types.</typeparam>
     public abstract class Dao<T> : IDao<T>
     {
         private string connString;
+
+        /// <summary>
+        /// Initializes a new instance of the Dao class.
+        /// </summary>
+        /// <param name="connString">The connection string.</param>
         public Dao(string connString)
         {
             this.connString = connString;
         }
 
+        /// <summary>
+        /// Creates record in table.
+        /// </summary>
+        /// <param name="obj">Object for recording.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public bool Create(T obj)
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -52,6 +66,11 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Delete record in table.
+        /// </summary>
+        /// <param name="id">Id of the object to be deleted.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public bool DeleteById(int id)
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -72,6 +91,11 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Read record in table.
+        /// </summary>
+        /// <param name="id">Id of the object to be read.</param>
+        /// <returns>Table entry.</returns>
         public T Read(int id)
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -114,6 +138,10 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Read all records in table.
+        /// </summary>
+        /// <returns>All table entry as List.</returns>
         public List<T> ReadAll()
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -158,6 +186,12 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Update record in table.
+        /// </summary>
+        /// <param name="obj">Object for updating.</param>
+        /// <param name="id">Id of the object to be updated.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public bool Update(T obj, int id)
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -194,7 +228,7 @@ namespace UniversityDAO
             }
         }
 
-        protected T GetObject(params object[] args)
+        private T GetObject(params object[] args)
         {
             return (T)Activator.CreateInstance(typeof(T), args);
         }

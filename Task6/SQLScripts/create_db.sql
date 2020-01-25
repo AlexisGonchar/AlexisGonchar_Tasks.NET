@@ -34,6 +34,7 @@ ADD CONSTRAINT `fk_students_groups`
   `idGroup` INT NOT NULL,
   `idSubject` INT NOT NULL,
   `type` VARCHAR(10) NOT NULL,
+  `numberOfSession` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_exams_groups`
     FOREIGN KEY (`idGroup`)

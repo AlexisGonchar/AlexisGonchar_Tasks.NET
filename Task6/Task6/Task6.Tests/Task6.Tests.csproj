@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Report\Report.csproj">
+      <Project>{a067930e-4d71-4c26-8b51-b35ef7cce1a4}</Project>
+      <Name>Report</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UniversityDAO\UniversityDAO.csproj">
       <Project>{808e31cd-bed6-465b-8c74-9354318a36a2}</Project>
       <Name>UniversityDAO</Name>

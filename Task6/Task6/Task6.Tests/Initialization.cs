@@ -85,7 +85,7 @@ namespace Task6.Tests
             {
                 for(int j = 0; j < countOfStudents; j++)
                 {
-                    string gender = rand.Next(0, 2) == 0 ? "Мужской" : "Жеский";
+                    string gender = rand.Next(0, 2) == 0 ? "Мужской" : "Женский";
                     string firstName = "";
                     string middleName = middleNames[rand.Next(0, middleNames.Length)];
                     string lastName = lastNames[rand.Next(0, lastNames.Length)];
@@ -109,6 +109,7 @@ namespace Task6.Tests
         {
             ExamDao examDao = factory.GetExamDao();
             DateTime from = new DateTime(2018, 1, 8);
+            int numberOfSession = 1;
             for(int sessions = 0; sessions < countOfSessions; sessions++)
             {
                 for (int groupId = 1; groupId <= groupNames.Length * countOfCourses * countOfSubgroups; groupId++)
@@ -117,11 +118,12 @@ namespace Task6.Tests
                     for (int exNum = 0; exNum < countOfExams; exNum++)
                     {
                         string type = rand.Next(0, 2) == 0 ? "Зачёт" : "Экзамен";
-                        Exam exam = new Exam(from.AddDays(exNum * 4), groupId, subjectStart + exNum, type);
+                        Exam exam = new Exam(from.AddDays(exNum * 4), groupId, subjectStart + exNum, type, numberOfSession);
                         examDao.Create(exam);
                     }
                 }
                 from = from.AddMonths(6);
+                numberOfSession++;
             }
         }
 

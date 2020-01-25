@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using UniversityDAO;
 using UniversityORM;
+using Report;
 
 namespace Task6.Tests
 {
@@ -14,21 +15,6 @@ namespace Task6.Tests
     {
         private static string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
         private static DaoFactory factory = DaoFactory.GetInstance(connString);
-        //[Test]
-        public void TestInsert()
-        {
-            
-            GroupDao groupDao = new GroupDao(connString);
-            groupDao.Create(new Group("ИТП-31"));            
-        }
-
-        //[Test]
-        public void TestDelete()
-        {
-            string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
-            GroupDao groupDao = new GroupDao(connString);
-            groupDao.DeleteById(2);
-        }
 
         //[Test]
         public void InitializationTables()
@@ -60,6 +46,15 @@ namespace Task6.Tests
             groupDao.Update(new Group("ИТ-21"), 3);
             Group group = groupDao.Read(3);
             Assert.AreEqual("ИТ-21", group.Name);
+        }
+
+        [Test]
+        public void TestExcel()
+        {
+            SessionResult sres = new SessionResult(factory);
+            var results = sres.GetResult("ИТИ-12", 2);
+            var header = SessionResult.GetHeader();
+            sres.WriteToExcel(@"D:\", "rep", results, header);
         }
     }
 }
