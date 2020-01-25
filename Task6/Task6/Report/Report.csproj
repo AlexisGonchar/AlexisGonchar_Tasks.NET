@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GroupSessionResult.cs" />
     <Compile Include="SessionResult.cs" />
+    <Compile Include="SessionResultRow.cs" />
     <Compile Include="StudentResult.cs" />
   </ItemGroup>
   <ItemGroup>

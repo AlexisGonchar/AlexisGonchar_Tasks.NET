@@ -49,12 +49,19 @@ namespace Task6.Tests
         }
 
         [Test]
-        public void TestExcel()
+        public void TestExcel1()
+        {
+            GroupSessionResult sres = new GroupSessionResult(factory);
+            var results = sres.GetResult("ИТИ-12", 2);
+            sres.WriteToExcel(@"D:\", "rep", results);
+        }
+
+        [Test]
+        public void TestExcel2()
         {
             SessionResult sres = new SessionResult(factory);
-            var results = sres.GetResult("ИТИ-12", 2);
-            var header = SessionResult.GetHeader();
-            sres.WriteToExcel(@"D:\", "rep", results, header);
+            var results = sres.GetResult(2);
+            sres.WriteToExcel(@"D:\", "rep2", results);
         }
     }
 }

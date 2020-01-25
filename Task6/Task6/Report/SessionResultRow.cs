@@ -10,10 +10,10 @@ namespace Report
     {
         public string GroupName { get; set; }
 
-        public double MinAssessment { get; set; }
+        public double MinMark { get; set; }
 
-        public double MaxAssessment { get; set; }
+        public double MaxMark { get; set; }
 
-        public double AverageAssessment { get; set; }
+        public double AverageMark { get; set; }
     }
 }

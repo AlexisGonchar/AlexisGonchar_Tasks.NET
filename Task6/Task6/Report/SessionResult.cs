@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversityDAO;
 using Microsoft.Office.Interop.Excel;
+using UniversityORM;
 
 namespace Report
 {
@@ -32,7 +33,7 @@ namespace Report
             };
         }
 
-        public IEnumerable<StudentResult> GetResult(string groupName, int numberOfSession)
+        public IEnumerable<SessionResultRow> GetResult(int numberOfSession)
         {
             var groups = groupDao.ReadAll();
             var subjects = subjectDao.ReadAll();
@@ -40,30 +41,29 @@ namespace Report
             var exams = examDao.ReadAll();
             var results = resultDao.ReadAll();
 
-            var groupWithId = groups.FirstOrDefault(x => x.Name == groupName);
-
-            var sessionResults = from student in students
-                                 join result in results on student.Id equals result.IdStudent
-                                 join exam in exams on result.IdExam equals exam.Id
-                                 join subject in subjects on exam.IdSubject equals subject.Id
-                                 where student.IdGroup == groupWithId.Id & exam.NumberOfSession == numberOfSession
-                                 select new StudentResult
-                                 {
-                                     FirstName = student.FirstName,
-                                     MiddleName = student.MiddleName,
-                                     LastName = student.LastName,
-                                     DateOfBirth = student.DateOfBirth,
-                                     Gender = student.Gender,
-                                     Date = exam.Date,
-                                     SubjectName = subject.Name,
-                                     ExamType = exam.Type,
-                                     Mark = result.Mark
-                                 };
+            List<SessionResultRow> sessionResults = new List<SessionResultRow>();
+            foreach (Group cgroup in groups)
+            {
+                var summaryResults = from result in results
+                                     join exam in exams on result.IdExam equals exam.Id
+                                     where exam.NumberOfSession == numberOfSession & exam.IdGroup == cgroup.Id
+                                     select result;
+                var averageMark = summaryResults.Average(r => r.Mark);
+                var minMark = summaryResults.Min(r => r.Mark);
+                var maxMark = summaryResults.Max(r => r.Mark);
+                sessionResults.Add(new SessionResultRow
+                {
+                    GroupName = cgroup.Name,
+                    AverageMark = averageMark,
+                    MinMark = minMark,
+                    MaxMark = maxMark
+                });
+            }
 
             return sessionResults;
         }
 
-        public void WriteToExcel(string directory, string fileName, IEnumerable<StudentResult> results)
+        public void WriteToExcel(string directory, string fileName, IEnumerable<SessionResultRow> results)
         {
             var header = GetHeader();
             string path = directory + fileName + ".xlsx";
@@ -79,15 +79,10 @@ namespace Report
             for (int i = 2; i < results.Count(); i++)
             {
                 r.MoveNext();
-                sheet.Cells[i, 1] = r.Current.LastName;
-                sheet.Cells[i, 2] = r.Current.FirstName;
-                sheet.Cells[i, 3] = r.Current.MiddleName;
-                sheet.Cells[i, 4] = r.Current.DateOfBirth.ToString("MM/dd/yyyy");
-                sheet.Cells[i, 5] = r.Current.Gender;
-                sheet.Cells[i, 6] = r.Current.SubjectName;
-                sheet.Cells[i, 7] = r.Current.ExamType;
-                sheet.Cells[i, 8] = r.Current.Date;
-                sheet.Cells[i, 9] = r.Current.Mark;
+                sheet.Cells[i, 1] = r.Current.GroupName;
+                sheet.Cells[i, 2] = r.Current.AverageMark;
+                sheet.Cells[i, 3] = r.Current.MinMark;
+                sheet.Cells[i, 4] = r.Current.MaxMark;
             }
 
             book.SaveAs(path);
