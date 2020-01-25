@@ -8,6 +8,9 @@ using UniversityORM;
 
 namespace Task6.Tests
 {
+    /// <summary>
+    /// Class for generate data in database.
+    /// </summary>
     public static class Initialization
     {
         private static DaoFactory factory;
@@ -38,6 +41,10 @@ namespace Task6.Tests
         private static int countOfSessions = 2;
         private static int countOfStudents = 10;
 
+        /// <summary>
+        /// Method for generate data in database.
+        /// </summary>
+        /// <param name="connString"></param>
         public static void InitializeTables(string connString)
         {
             factory = DaoFactory.GetInstance(connString);

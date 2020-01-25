@@ -9,6 +9,9 @@ using UniversityORM;
 
 namespace Report
 {
+    /// <summary>
+    /// Class for createint report.
+    /// </summary>
     public class SessionResult
     {
         private static GroupDao groupDao;
@@ -17,6 +20,10 @@ namespace Report
         private static ExamDao examDao;
         private static ResultDao resultDao;
 
+        /// <summary>
+        /// Initializes a new instance of the SessionResult class.
+        /// </summary>
+        /// <param name="factory"></param>
         public SessionResult(DaoFactory factory)
         {
             groupDao = factory.GetGroupDao();
@@ -33,6 +40,11 @@ namespace Report
             };
         }
 
+        /// <summary>
+        /// Method for obtaining the necessary data.
+        /// </summary>
+        /// <param name="numberOfSession"></param>
+        /// <returns></returns>
         public IEnumerable<SessionResultRow> GetResult(int numberOfSession)
         {
             var groups = groupDao.ReadAll();
@@ -63,6 +75,12 @@ namespace Report
             return sessionResults;
         }
 
+        /// <summary>
+        /// Method for writing to a file.
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <param name="fileName"></param>
+        /// <param name="results"></param>
         public void WriteToExcel(string directory, string fileName, IEnumerable<SessionResultRow> results)
         {
             var header = GetHeader();

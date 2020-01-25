@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Report
 {
+    /// <summary>
+    /// Class StudentResult.
+    /// </summary>
     public class StudentResult
     {
         /// <summary>
