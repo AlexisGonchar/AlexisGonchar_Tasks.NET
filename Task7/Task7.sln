@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityORM", "UniversityORM\UniversityORM.csproj", "{9D42A970-DFF8-4275-BB6F-9997C912C4DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityDAO", "UniversityDao\UniversityDAO.csproj", "{830296E1-7416-41B3-AE18-880F67976406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task7.Tests", "Task7.Tests\Task7.Tests.csproj", "{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D42A970-DFF8-4275-BB6F-9997C912C4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D42A970-DFF8-4275-BB6F-9997C912C4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D42A970-DFF8-4275-BB6F-9997C912C4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D42A970-DFF8-4275-BB6F-9997C912C4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{830296E1-7416-41B3-AE18-880F67976406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{830296E1-7416-41B3-AE18-880F67976406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{830296E1-7416-41B3-AE18-880F67976406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{830296E1-7416-41B3-AE18-880F67976406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
