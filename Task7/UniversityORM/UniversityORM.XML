@@ -170,6 +170,16 @@
             </summary>
             <returns>A hash code for the current object.</returns>
         </member>
+        <member name="T:UniversityORM.IEntry">
+            <summary>
+            Interface for storage id.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.IEntry.Id">
+            <summary>
+            Identification number.
+            </summary>
+        </member>
         <member name="T:UniversityORM.Result">
             <summary>
             Mark class.
@@ -229,6 +239,11 @@
             Get a hash code for the current object.
             </summary>
             <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:UniversityORM.Specialty">
+            <summary>
+            Specialty class.
+            </summary>
         </member>
         <member name="P:UniversityORM.Specialty.Id">
             <summary>

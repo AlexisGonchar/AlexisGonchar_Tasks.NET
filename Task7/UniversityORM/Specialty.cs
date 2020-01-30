@@ -2,6 +2,9 @@
 
 namespace UniversityORM
 {
+    /// <summary>
+    /// Specialty class.
+    /// </summary>
     [Table(Name = "Specialty")]
     public class Specialty : IEntry
     {

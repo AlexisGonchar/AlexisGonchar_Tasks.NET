@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UniversityDAO;
-using UniversityORM;
 
 namespace Report
 {
+    /// <summary>
+    /// Class for getting data.
+    /// </summary>
     public class AverageSpecialtyReport
     {
         private ExamDao examDao;
         private ResultDao resultDao;
         private GroupDao groupDao;
         private SpecialtyDao specialtyDao;
+
+        /// <summary>
+        /// Initializes a new instance of the AverageSpecialtyReport class.
+        /// </summary>
+        /// <param name="factory"></param>
         public AverageSpecialtyReport(DaoFactory factory)
         {
             examDao = factory.GetExamDao();
@@ -19,11 +26,20 @@ namespace Report
             specialtyDao = factory.GetSpecialtyDao();
         }
 
+        /// <summary>
+        /// Gets header.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetHeader()
         {
             return new List<string> { "Специальность", "Средний балл" };
         }
 
+        /// <summary>
+        /// Gets data.
+        /// </summary>
+        /// <param name="numberOfSession"></param>
+        /// <returns></returns>
         public List<AverageSpecialty> GetData(int numberOfSession)
         {
             var exams = examDao.ReadAll();

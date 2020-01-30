@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UniversityDAO;
-using UniversityORM;
 
 namespace Report
 {
@@ -13,6 +12,11 @@ namespace Report
         private ExamDao examDao;
         private ResultDao resultDao;
         private ExaminatorDao examinatorDao;
+
+        /// <summary>
+        /// Initializes a new instance of the AverageExaminatorReport class.
+        /// </summary>
+        /// <param name="factory"></param>
         public AverageExaminatorReport(DaoFactory factory)
         {
             examDao = factory.GetExamDao();
@@ -20,11 +24,20 @@ namespace Report
             examinatorDao = factory.GetExaminatorDao();
         }
 
+        /// <summary>
+        /// Gets header.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetHeader()
         {
             return new List<string> { "Экзаменатор", "Средний балл" };
         }
 
+        /// <summary>
+        /// Gets data.
+        /// </summary>
+        /// <param name="numberOfSession"></param>
+        /// <returns></returns>
         public List<AverageExaminator> GetData(int numberOfSession)
         {
             var exams = examDao.ReadAll();

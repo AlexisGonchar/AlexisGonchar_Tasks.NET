@@ -16,6 +16,95 @@
             </summary>
             <param name="connString">The connection string.</param>
         </member>
+        <member name="M:UniversityDAO.Dao`1.Create(`0)">
+            <summary>
+            Creates record in table.
+            </summary>
+            <param name="obj">Object for recording.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityDAO.Dao`1.DeleteById(System.Int32)">
+            <summary>
+            Delete record in table.
+            </summary>
+            <param name="id">Id of the object to be deleted.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityDAO.Dao`1.Read(System.Int32)">
+            <summary>
+            Read record in table.
+            </summary>
+            <param name="id">Id of the object to be read.</param>
+            <returns>Table entry.</returns>
+        </member>
+        <member name="M:UniversityDAO.Dao`1.ReadAll">
+            <summary>
+            Read all records in table.
+            </summary>
+            <returns>All table entry as List.</returns>
+        </member>
+        <member name="M:UniversityDAO.Dao`1.Update(`0,System.Int32)">
+            <summary>
+            Update record in table.
+            </summary>
+            <param name="obj">Object for updating.</param>
+            <param name="id">Id of the object to be updated.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="T:UniversityDAO.DaoFactory">
+            <summary>
+            DaoFactory class.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetInstance(System.String)">
+            <summary>
+            Gets instance of factory.
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetExamDao">
+            <summary>
+            Gets the DAO exam.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetGroupDao">
+            <summary>
+            Gets the DAO group.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetResultDao">
+            <summary>
+            Gets the DAO result.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetStudentDao">
+            <summary>
+            Gets the DAO student.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetSubjectDao">
+            <summary>
+            Gets the DAO subject.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetSpecialtyDao">
+            <summary>
+            Gets the DAO specialty.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.DaoFactory.GetExaminatorDao">
+            <summary>
+            Gets the DAO examinator.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:UniversityDAO.ExamDao">
             <summary>
             Class for working with Exams table.
@@ -26,6 +115,64 @@
             Initializes a new instance of the ExamDao class.
             </summary>
             <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.ExaminatorDao">
+            <summary>
+            Class for working with Examinator table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.ExaminatorDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ExaminatorDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.Factory">
+            <summary>
+            Abstract class for DaoFactory.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetGroupDao">
+            <summary>
+            Gets the DAO group.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetSubjectDao">
+            <summary>
+            Gets the DAO subject.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetStudentDao">
+            <summary>
+            Gets the DAO student.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetExamDao">
+            <summary>
+            Gets the DAO exam.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetResultDao">
+            <summary>
+            Gets the DAO result.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetSpecialtyDao">
+            <summary>
+            Gets the DAO specialty.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversityDAO.Factory.GetExaminatorDao">
+            <summary>
+            Gets the DAO examinator.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:UniversityDAO.GroupDao">
             <summary>
@@ -87,6 +234,17 @@
         <member name="M:UniversityDAO.ResultDao.#ctor(System.String)">
             <summary>
             Initializes a new instance of the ResultDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.SpecialtyDao">
+            <summary>
+            Class for working with Specialty table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.SpecialtyDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SpecialtyDao class.
             </summary>
             <param name="connString">The connection string.</param>
         </member>

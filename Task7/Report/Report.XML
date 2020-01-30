@@ -4,15 +4,121 @@
         <name>Report</name>
     </assembly>
     <members>
+        <member name="T:Report.AverageExaminator">
+            <summary>
+            AverageExaminator class.
+            </summary>
+        </member>
+        <member name="P:Report.AverageExaminator.ExaminatorName">
+            <summary>
+            Examinator name.
+            </summary>
+        </member>
+        <member name="P:Report.AverageExaminator.AverageMark">
+            <summary>
+            Average mark.
+            </summary>
+        </member>
         <member name="T:Report.AverageExaminatorReport">
             <summary>
             Class for getting data.
+            </summary>
+        </member>
+        <member name="M:Report.AverageExaminatorReport.#ctor(UniversityDAO.DaoFactory)">
+            <summary>
+            Initializes a new instance of the AverageExaminatorReport class.
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:Report.AverageExaminatorReport.GetHeader">
+            <summary>
+            Gets header.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Report.AverageExaminatorReport.GetData(System.Int32)">
+            <summary>
+            Gets data.
+            </summary>
+            <param name="numberOfSession"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Report.AverageSpecialty">
+            <summary>
+            AverageSpecialty class.
+            </summary>
+        </member>
+        <member name="P:Report.AverageSpecialty.SpecialtyName">
+            <summary>
+            Specialty name.
+            </summary>
+        </member>
+        <member name="P:Report.AverageSpecialty.AverageMark">
+            <summary>
+            Average mark.
+            </summary>
+        </member>
+        <member name="T:Report.AverageSpecialtyReport">
+            <summary>
+            Class for getting data.
+            </summary>
+        </member>
+        <member name="M:Report.AverageSpecialtyReport.#ctor(UniversityDAO.DaoFactory)">
+            <summary>
+            Initializes a new instance of the AverageSpecialtyReport class.
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:Report.AverageSpecialtyReport.GetHeader">
+            <summary>
+            Gets header.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Report.AverageSpecialtyReport.GetData(System.Int32)">
+            <summary>
+            Gets data.
+            </summary>
+            <param name="numberOfSession"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Report.AverageSubject">
+            <summary>
+            AverageSubject class.
+            </summary>
+        </member>
+        <member name="P:Report.AverageSubject.SubjectName">
+            <summary>
+            Subject name.
+            </summary>
+        </member>
+        <member name="P:Report.AverageSubject.AverageMarks">
+            <summary>
+            Average marks for all sessions.
             </summary>
         </member>
         <member name="T:Report.AverageSubjectReport">
             <summary>
             Class for getting data.
             </summary>
+        </member>
+        <member name="M:Report.AverageSubjectReport.#ctor(UniversityDAO.DaoFactory)">
+            <summary>
+            Initializes a new instance of the AverageSubjectReport class.
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:Report.AverageSubjectReport.GetHeader">
+            <summary>
+            Gets header.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Report.AverageSubjectReport.GetData">
+            <summary>
+            Gets data.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Report.AverageSubjectReport.WriteToExcel(System.String,System.String)">
             <summary>

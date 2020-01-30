@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UniversityDAO
+﻿namespace UniversityDAO
 {
+    /// <summary>
+    /// DaoFactory class.
+    /// </summary>
     public class DaoFactory : Factory
     {
         private static DaoFactory instance;
@@ -23,6 +20,11 @@ namespace UniversityDAO
 
         }
 
+        /// <summary>
+        /// Gets instance of factory.
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
         public static DaoFactory GetInstance(string connectionString)
         {
             if (instance == null)
@@ -33,6 +35,10 @@ namespace UniversityDAO
             return instance;
         }
 
+        /// <summary>
+        /// Gets the DAO exam.
+        /// </summary>
+        /// <returns></returns>
         public override ExamDao GetExamDao()
         {
             if (examDao == null)
@@ -40,6 +46,10 @@ namespace UniversityDAO
             return examDao;
         }
 
+        /// <summary>
+        /// Gets the DAO group.
+        /// </summary>
+        /// <returns></returns>
         public override GroupDao GetGroupDao()
         {
             if (groupDao == null)
@@ -47,34 +57,50 @@ namespace UniversityDAO
             return groupDao;
         }
 
+        /// <summary>
+        /// Gets the DAO result.
+        /// </summary>
+        /// <returns></returns>
         public override ResultDao GetResultDao()
         {
             if (resultDao == null)
                 resultDao = new ResultDao(connString);
             return resultDao;
         }
-
+        /// <summary>
+        /// Gets the DAO student.
+        /// </summary>
+        /// <returns></returns>
         public override StudentDao GetStudentDao()
         {
             if (studentDao == null)
                 studentDao = new StudentDao(connString);
             return studentDao;
         }
-
+        /// <summary>
+        /// Gets the DAO subject.
+        /// </summary>
+        /// <returns></returns>
         public override SubjectDao GetSubjectDao()
         {
             if (subjectDao == null)
                 subjectDao = new SubjectDao(connString);
             return subjectDao;
         }
-
+        /// <summary>
+        /// Gets the DAO specialty.
+        /// </summary>
+        /// <returns></returns>
         public override SpecialtyDao GetSpecialtyDao()
         {
             if (specialtyDao == null)
                 specialtyDao = new SpecialtyDao(connString);
             return specialtyDao;
         }
-
+        /// <summary>
+        /// Gets the DAO examinator.
+        /// </summary>
+        /// <returns></returns>
         public override ExaminatorDao GetExaminatorDao()
         {
             if (examinatorDao == null)

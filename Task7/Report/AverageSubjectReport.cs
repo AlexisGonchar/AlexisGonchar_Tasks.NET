@@ -15,6 +15,10 @@ namespace Report
         private SubjectDao subjectDao;
         private int sessionsCount;
 
+        /// <summary>
+        /// Initializes a new instance of the AverageSubjectReport class.
+        /// </summary>
+        /// <param name="factory"></param>
         public AverageSubjectReport(DaoFactory factory)
         {
             examDao = factory.GetExamDao();
@@ -22,6 +26,10 @@ namespace Report
             subjectDao = factory.GetSubjectDao();
         }
 
+        /// <summary>
+        /// Gets header.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetHeader()
         {
             var exams = examDao.ReadAll();
@@ -32,6 +40,10 @@ namespace Report
             return header;
         }
 
+        /// <summary>
+        /// Gets data.
+        /// </summary>
+        /// <returns></returns>
         public List<AverageSubject> GetData()
         {
             var exams = examDao.ReadAll();

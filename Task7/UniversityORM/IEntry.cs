@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace UniversityORM
 {
+    /// <summary>
+    /// Interface for storage id.
+    /// </summary>
     public interface IEntry
     {
+        /// <summary>
+        /// Identification number.
+        /// </summary>
         int Id { get; set; }
     }
 }

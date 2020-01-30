@@ -50,7 +50,7 @@ namespace Task7.Tests
             GroupDao groupDao = factory.GetGroupDao();
             List<Group> groups = groupDao.ReadAll();
             Group group = groups[1];
-            Group expectedGroup = new Group("ИТ-12", 1);
+            Group expectedGroup = new Group("ИТ-21", 1);
             Assert.AreEqual(expectedGroup, group);
         }
 

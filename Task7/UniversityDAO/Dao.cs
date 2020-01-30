@@ -25,6 +25,11 @@ namespace UniversityDAO
             sqlConn = new MySqlConnection(connString);
         }
 
+        /// <summary>
+        /// Creates record in table.
+        /// </summary>
+        /// <param name="obj">Object for recording.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public void Create(T obj)
         {
             using (MySqlDataContext dataContext = new MySqlDataContext(sqlConn))
@@ -34,6 +39,11 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Delete record in table.
+        /// </summary>
+        /// <param name="id">Id of the object to be deleted.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public void DeleteById(int id)
         {
             using (MySqlDataContext dataContext = new MySqlDataContext(sqlConn))
@@ -44,6 +54,11 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Read record in table.
+        /// </summary>
+        /// <param name="id">Id of the object to be read.</param>
+        /// <returns>Table entry.</returns>
         public T Read(int id)
         {
             using (MySqlDataContext dataContext = new MySqlDataContext(sqlConn))
@@ -52,6 +67,10 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Read all records in table.
+        /// </summary>
+        /// <returns>All table entry as List.</returns>
         public List<T> ReadAll()
         {
             using (MySqlDataContext dataContext = new MySqlDataContext(sqlConn))
@@ -60,6 +79,12 @@ namespace UniversityDAO
             }
         }
 
+        /// <summary>
+        /// Update record in table.
+        /// </summary>
+        /// <param name="obj">Object for updating.</param>
+        /// <param name="id">Id of the object to be updated.</param>
+        /// <returns>true if the operation was successful; otherwise, false.</returns>
         public void Update(T obj, int id)
         {
             using (MySqlDataContext dataContext = new MySqlDataContext(sqlConn))
