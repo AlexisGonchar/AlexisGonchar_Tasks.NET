@@ -64,7 +64,7 @@ ADD CONSTRAINT `fk_students_groups`
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_exams_examinators`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`idExaminator`)
     REFERENCES `universitydb`.`examinators` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

@@ -22,6 +22,11 @@ namespace UniversityORM
         /// <summary>
         /// Initializes a new instance of the Subject class.
         /// </summary>
+        public Subject() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Subject class.
+        /// </summary>
         /// <param name="id"></param>
         /// <param name="subjectName"></param>
         public Subject(int id, string subjectName)

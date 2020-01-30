@@ -39,11 +39,11 @@ namespace Task7.Tests
             "Промышленные информационные системы", "Информатика и технологии программирования",
             "Промышленная электроника" };
 
-        private static int countOfCourses = 4;
+        private static int countOfCourses = 3;
         private static int countOfSubgroups = 1;
         private static int countOfExams = 2;
-        private static int countOfSessions = 2;
-        private static int countOfStudents = 5;
+        private static int countOfSessions = 4;
+        private static int countOfStudents = 4;
 
         /// <summary>
         /// Method for generate data in database.

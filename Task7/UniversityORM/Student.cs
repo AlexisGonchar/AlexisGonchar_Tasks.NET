@@ -48,6 +48,11 @@ namespace UniversityORM
         /// <summary>
         /// Initializes a new instance of the Student class.
         /// </summary>
+        public Student() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Student class.
+        /// </summary>
         /// <param name="id"></param>
         /// <param name="firstName"></param>
         /// <param name="middleName"></param>

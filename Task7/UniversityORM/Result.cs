@@ -30,6 +30,11 @@ namespace UniversityORM
         public int Mark { get; set; }
 
         /// <summary>
+        /// Initializes a new instance of the Result class.
+        /// </summary>
+        public Result() { }
+
+        /// <summary>
         /// Initializes a new instance of the Mark class.
         /// </summary>
         /// <param name="id"></param>

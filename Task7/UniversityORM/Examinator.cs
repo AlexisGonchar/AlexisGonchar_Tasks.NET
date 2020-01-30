@@ -10,15 +10,32 @@ namespace UniversityORM
         /// </summary>
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int Id { get; set; }
+        /// <summary>
+        /// Examinator name.
+        /// </summary>
         [Column(Name = "Name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Examinator class.
+        /// </summary>
+        public Examinator() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Examinator class.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public Examinator(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Examinator class.
+        /// </summary>
+        /// <param name="name"></param>
         public Examinator(string name)
         {
             Name = name;

@@ -45,6 +45,10 @@ namespace UniversityORM
         [Column(Name = "NumberOfSession")]
         public int NumberOfSession { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Exam class.
+        /// </summary>
+        public Exam(){}
 
         /// <summary>
         /// Initializes a new instance of the Exam class.

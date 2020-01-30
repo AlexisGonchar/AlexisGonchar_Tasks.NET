@@ -24,6 +24,11 @@ namespace UniversityORM
         /// <summary>
         /// Initializes a new instance of the Group class.
         /// </summary>
+        public Group() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Group class.
+        /// </summary>
         /// <param name="id"></param>
         /// <param name="groupName"></param>
         public Group(int id, string groupName, int idSpecialty)

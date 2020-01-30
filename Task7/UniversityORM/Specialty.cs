@@ -10,15 +10,32 @@ namespace UniversityORM
         /// </summary>
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int Id { get; set; }
+        /// <summary>
+        /// Specialty name.
+        /// </summary>
         [Column(Name = "Name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Specialty class.
+        /// </summary>
+        public Specialty() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Specialty class.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public Specialty(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Specialty class.
+        /// </summary>
+        /// <param name="name"></param>
         public Specialty(string name)
         {
             Name = name;

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UniversityDAO;
 using UniversityORM;
+using Report;
 
 namespace Task7.Tests
 {
@@ -13,7 +9,8 @@ namespace Task7.Tests
     public class Tests
     {
         private static string connString = "Server=localhost;Database=universitydb;port=3306;User Id=root";
-        string connectionString = "Persist Security Info=False;Integrated Security=SSPI;database= universitydb;server= localhost;Connect Timeout=30";
+        DaoFactory factory = DaoFactory.GetInstance(connString);
+
         [Test]
         public void Test()
         {
@@ -33,14 +30,27 @@ namespace Task7.Tests
         [Test]
         public void TestDelete()
         {
-            GroupDao groupDao = new GroupDao(connString);
-            groupDao.DeleteById(1);
+            ResultDao resultDao = factory.GetResultDao();
+            resultDao.DeleteById(2);
         }
 
         [Test]
         public void TestInit()
         {
             Initialization.InitializeTables(connString);
+        }
+
+        [Test]
+        public void TestAverageSpecialtyReport()
+        {
+            AverageSpecialtyReport report = new AverageSpecialtyReport(factory);
+            ExcelWriter<AverageSpecialty>.WriteToExcel(@"D:\", "rep", report.GetHeader(), report.GetData(2)); 
+        }
+        [Test]
+        public void TestAverageExaminatorReport()
+        {
+            AverageExaminatorReport report = new AverageExaminatorReport(factory);
+            ExcelWriter<AverageExaminator>.WriteToExcel(@"D:\", "rep2", report.GetHeader(), report.GetData(1));
         }
     }
 }
