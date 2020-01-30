@@ -6,14 +6,14 @@ namespace UniversityDAO
     /// Interface defining methods for working with tables.
     /// </summary>
     /// <typeparam name="T">Universal parameter accepting any types.</typeparam>
-    public interface IDao<T>
+    public interface IDao<T> 
     {
         /// <summary>
         /// Creates record in table.
         /// </summary>
         /// <param name="obj">Object for recording.</param>
         /// <returns>true if the operation was successful; otherwise, false.</returns>
-        bool Create(T obj);
+        void Create(T obj);
 
         /// <summary>
         /// Update record in table.
@@ -28,7 +28,7 @@ namespace UniversityDAO
         /// </summary>
         /// <param name="id">Id of the object to be deleted.</param>
         /// <returns>true if the operation was successful; otherwise, false.</returns>
-        bool DeleteById(int id);
+        void DeleteById(int id);
 
         /// <summary>
         /// Read record in table.

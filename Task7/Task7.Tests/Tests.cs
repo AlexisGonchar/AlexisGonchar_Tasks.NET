@@ -26,8 +26,15 @@ namespace Task7.Tests
         public void TestUpdate()
         {
             GroupDao groupDao = new GroupDao(connString);
-            Group group = new Group { Name = "ИТИ" };
+            Group group = new Group { Name = "ИТ-11" };
             groupDao.Update(group, 1);
+        }
+
+        [Test]
+        public void TestDelete()
+        {
+            GroupDao groupDao = new GroupDao(connString);
+            groupDao.DeleteById(1);
         }
     }
 }

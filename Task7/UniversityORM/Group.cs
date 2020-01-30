@@ -6,7 +6,7 @@ namespace UniversityORM
     /// Group class
     /// </summary>
     [Table (Name = "Groups")]
-    public class Group
+    public class Group : IEntry
     {
         /// <summary>
         /// Group identification number.
