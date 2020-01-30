@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D42A970-DFF8-4275-BB6F-9997C912C4DA}</ProjectGuid>
+    <ProjectGuid>{ABC5E295-1CDE-40BE-A7B6-AEF24E44ADED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UniversityORM</RootNamespace>
@@ -32,11 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Shaman.DbLinq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=61e015a67077348b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shaman.DbLinq.1.0.1.6\lib\net46\Shaman.DbLinq.dll</HintPath>
+      <HintPath>..\packages\Shaman.DbLinq.1.0.1.5\lib\net46\Shaman.DbLinq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Shaman.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=18bc04d2eb1e1518, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shaman.Reflection.1.0.0.21\lib\net45\Shaman.Reflection.dll</HintPath>
+      <HintPath>..\packages\Shaman.Reflection.1.0.0.24\lib\net45\Shaman.Reflection.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Shaman.System.Linq.Expressions.Interpreter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=712f6b6deeaf4702, processorArchitecture=MSIL">
@@ -58,8 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Group.cs" />
+    <Compile Include="Exam.cs" />
+    <Compile Include="Examinator.cs" />
     <Compile Include="IEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Specialty.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Subject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

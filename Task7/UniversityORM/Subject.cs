@@ -3,44 +3,40 @@
 namespace UniversityORM
 {
     /// <summary>
-    /// Group class
+    /// Subject class.
     /// </summary>
-    [Table (Name = "Groups")]
-    public class Group : IEntry
+    [Table(Name = "Subjects")]
+    public class Subject : IEntry
     {
         /// <summary>
-        /// Group identification number.
+        /// Subject identification number.
         /// </summary>
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int Id { get; set; }
         /// <summary>
-        /// Group name.
+        /// Subject name.
         /// </summary>
         [Column(Name = "Name")]
         public string Name { get; set; }
-        [Column(Name = "idSpecialty")]
-        public int IdSpecialty { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the Group class.
+        /// Initializes a new instance of the Subject class.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="groupName"></param>
-        public Group(int id, string groupName, int idSpecialty)
+        /// <param name="subjectName"></param>
+        public Subject(int id, string subjectName)
         {
             Id = id;
-            Name = groupName;
-            IdSpecialty = idSpecialty;
+            Name = subjectName;
         }
 
         /// <summary>
-        /// Initializes a new instance of the Group class.
+        /// Initializes a new instance of the Subject class.
         /// </summary>
-        /// <param name="groupName"></param>
-        public Group(string groupName, int idSpecialty)
+        /// <param name="subjectName"></param>
+        public Subject(string subjectName)
         {
-            Name = groupName;
-            IdSpecialty = idSpecialty;
+            Name = subjectName;
         }
 
         /// <summary>
@@ -52,10 +48,10 @@ namespace UniversityORM
         {
             if (obj == null)
                 return false;
-            Group group = obj as Group;
-            if (group == null)
+            Subject subject = obj as Subject;
+            if (subject == null)
                 return false;
-            return Name.Equals(group.Name) && IdSpecialty.Equals(group.IdSpecialty);
+            return Name.Equals(subject.Name);
         }
 
         /// <summary>
@@ -64,7 +60,7 @@ namespace UniversityORM
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return Name.GetHashCode() * 5 + IdSpecialty.GetHashCode();
+            return Name.GetHashCode() * 4;
         }
     }
 }

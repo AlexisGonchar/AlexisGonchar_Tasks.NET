@@ -6,16 +6,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD1AFE79-86BA-4F66-B2A3-DF499C5D669E}</ProjectGuid>
+    <ProjectGuid>{B5FC534A-714B-46D3-A64D-739587AC0A63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Task7.Tests</RootNamespace>
     <AssemblyName>Task7.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,21 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Initialization.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UniversityDao\UniversityDAO.csproj">
-      <Project>{830296e1-7416-41b3-ae18-880f67976406}</Project>
+    <ProjectReference Include="..\UniversityDAO\UniversityDAO.csproj">
+      <Project>{f12cacb2-ffac-4585-a5eb-993371eea709}</Project>
       <Name>UniversityDAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\UniversityORM\UniversityORM.csproj">
-      <Project>{9d42a970-dff8-4275-bb6f-9997c912c4da}</Project>
+      <Project>{abc5e295-1cde-40be-a7b6-aef24e44aded}</Project>
       <Name>UniversityORM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
