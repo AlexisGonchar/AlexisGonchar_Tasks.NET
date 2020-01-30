@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Report</name>
+    </assembly>
+    <members>
+        <member name="T:Report.AverageExaminatorReport">
+            <summary>
+            Class for getting data.
+            </summary>
+        </member>
+        <member name="T:Report.AverageSubjectReport">
+            <summary>
+            Class for getting data.
+            </summary>
+        </member>
+        <member name="M:Report.AverageSubjectReport.WriteToExcel(System.String,System.String)">
+            <summary>
+            Method for write data to Excel file.
+            </summary>
+            <param name="directory"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="T:Report.ExcelWriter`1">
+            <summary>
+            Class for write data to Excel file.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Report.ExcelWriter`1.WriteToExcel(System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{`0})">
+            <summary>
+            Method for write data to Excel file.
+            </summary>
+            <param name="directory"></param>
+            <param name="fileName"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+        </member>
+    </members>
+</doc>

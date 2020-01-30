@@ -31,7 +31,7 @@ namespace Report
             var groups = groupDao.ReadAll();
             var specialtyL = specialtyDao.ReadAll();
 
-            List<AverageSpecialty> AverageSpecialtyList = new List<AverageSpecialty>();
+            List<AverageSpecialty> averageSpecialtyList = new List<AverageSpecialty>();
 
             foreach (var val in specialtyL)
             {
@@ -43,14 +43,14 @@ namespace Report
                             where exam.NumberOfSession == numberOfSession
                             select result;
                 var averageResult = marks.Average(x => x.Mark);
-                AverageSpecialtyList.Add(new AverageSpecialty
+                averageSpecialtyList.Add(new AverageSpecialty
                 {
                     SpecialtyName = val.Name,
                     AverageMark = averageResult
                 });
             }
 
-            return AverageSpecialtyList;
+            return averageSpecialtyList;
         }
     }
 }

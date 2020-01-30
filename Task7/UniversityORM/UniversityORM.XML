@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UniversityORM</name>
+    </assembly>
+    <members>
+        <member name="T:UniversityORM.Group">
+            <summary>
+            Group class
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Group.Id">
+            <summary>
+            Group identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Group.Name">
+            <summary>
+            Group name.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Group.#ctor">
+            <summary>
+            Initializes a new instance of the Group class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Group.#ctor(System.Int32,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Group class.
+            </summary>
+            <param name="id"></param>
+            <param name="groupName"></param>
+        </member>
+        <member name="M:UniversityORM.Group.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Group class.
+            </summary>
+            <param name="groupName"></param>
+        </member>
+        <member name="M:UniversityORM.Group.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Group.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:UniversityORM.Exam">
+            <summary>
+            Exam class.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.Id">
+            <summary>
+            Exam identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.Date">
+            <summary>
+            Date and time when the exam will be held.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.IdGroup">
+            <summary>
+            Identification number of the group where the exam will be held
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.IdSubject">
+            <summary>
+            Identification number of the subject for which the exam will be conducted.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.IdExaminator">
+            <summary>
+            Identification number of the examinator.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.Type">
+            <summary>
+            Exam type.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Exam.NumberOfSession">
+            <summary>
+            Number of session.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Exam.#ctor">
+            <summary>
+            Initializes a new instance of the Exam class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Exam.#ctor(System.Int32,System.DateTime,System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Exam class.
+            </summary>
+            <param name="id"></param>
+            <param name="date"></param>
+            <param name="idSubject"></param>
+            <param name="idGroup"></param>
+            <param name="type"></param>
+            <param name="numberOfSession"></param>
+        </member>
+        <member name="M:UniversityORM.Exam.#ctor(System.DateTime,System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Exam class.
+            </summary>
+            <param name="date"></param>
+            <param name="idSubject"></param>
+            <param name="idGroup"></param>
+            <param name="type"></param>
+            <param name="numberOfSession"></param>
+        </member>
+        <member name="M:UniversityORM.Exam.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Exam.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="P:UniversityORM.Examinator.Id">
+            <summary>
+            Examinator identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Examinator.Name">
+            <summary>
+            Examinator name.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Examinator.#ctor">
+            <summary>
+            Initializes a new instance of the Examinator class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Examinator.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the Examinator class.
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:UniversityORM.Examinator.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Examinator class.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:UniversityORM.Examinator.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Examinator.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:UniversityORM.Result">
+            <summary>
+            Mark class.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Result.Id">
+            <summary>
+            Mark identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Result.IdStudent">
+            <summary>
+            Student identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Result.IdExam">
+            <summary>
+            Exam identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Result.Mark">
+            <summary>
+            Mark for the exam.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Result.#ctor">
+            <summary>
+            Initializes a new instance of the Result class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Result.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the Mark class.
+            </summary>
+            <param name="id"></param>
+            <param name="idExam"></param>
+            <param name="idStudent"></param>
+            <param name="markForExam"></param>
+        </member>
+        <member name="M:UniversityORM.Result.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the Mark class.
+            </summary>
+            <param name="idExam"></param>
+            <param name="idStudent"></param>
+            <param name="markForExam"></param>
+        </member>
+        <member name="M:UniversityORM.Result.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Result.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="P:UniversityORM.Specialty.Id">
+            <summary>
+            Specialty identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Specialty.Name">
+            <summary>
+            Specialty name.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Specialty.#ctor">
+            <summary>
+            Initializes a new instance of the Specialty class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Specialty.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the Specialty class.
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:UniversityORM.Specialty.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Specialty class.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:UniversityORM.Specialty.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Specialty.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:UniversityORM.Student">
+            <summary>
+            Student class.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.Id">
+            <summary>
+            Student identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.FirstName">
+            <summary>
+            Student first name.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.MiddleName">
+            <summary>
+            Student middle name.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.LastName">
+            <summary>
+            Student last name.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.Gender">
+            <summary>
+            Student gender.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.DateOfBirth">
+            <summary>
+            Student date of birth.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Student.IdGroup">
+            <summary>
+            Identification number of the group that the student belongs to.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Student.#ctor">
+            <summary>
+            Initializes a new instance of the Student class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Student.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.DateTime,System.Int32)">
+            <summary>
+            Initializes a new instance of the Student class.
+            </summary>
+            <param name="id"></param>
+            <param name="firstName"></param>
+            <param name="middleName"></param>
+            <param name="lastName"></param>
+            <param name="gender"></param>
+            <param name="dateOfBirth"></param>
+            <param name="idGroups"></param>
+        </member>
+        <member name="M:UniversityORM.Student.#ctor(System.String,System.String,System.String,System.String,System.DateTime,System.Int32)">
+            <summary>
+            Initializes a new instance of the Student class.
+            </summary>
+            <param name="firstName"></param>
+            <param name="middleName"></param>
+            <param name="lastName"></param>
+            <param name="gender"></param>
+            <param name="dateOfBirth"></param>
+            <param name="idGroup"></param>
+        </member>
+        <member name="M:UniversityORM.Student.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Student.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:UniversityORM.Subject">
+            <summary>
+            Subject class.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Subject.Id">
+            <summary>
+            Subject identification number.
+            </summary>
+        </member>
+        <member name="P:UniversityORM.Subject.Name">
+            <summary>
+            Subject name.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Subject.#ctor">
+            <summary>
+            Initializes a new instance of the Subject class.
+            </summary>
+        </member>
+        <member name="M:UniversityORM.Subject.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the Subject class.
+            </summary>
+            <param name="id"></param>
+            <param name="subjectName"></param>
+        </member>
+        <member name="M:UniversityORM.Subject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Subject class.
+            </summary>
+            <param name="subjectName"></param>
+        </member>
+        <member name="M:UniversityORM.Subject.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>Boolean true if the specified object is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityORM.Subject.GetHashCode">
+            <summary>
+            Get a hash code for the current object.
+            </summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+    </members>
+</doc>

@@ -5,6 +5,9 @@ using UniversityORM;
 
 namespace Report
 {
+    /// <summary>
+    /// Class for getting data.
+    /// </summary>
     public class AverageExaminatorReport
     {
         private ExamDao examDao;
@@ -28,7 +31,7 @@ namespace Report
             var results = resultDao.ReadAll();
             var examinators = examinatorDao.ReadAll();
 
-            List<AverageExaminator> AverageExaminatorList = new List<AverageExaminator>();
+            List<AverageExaminator> averageExaminatorList = new List<AverageExaminator>();
 
             foreach (var val in examinators)
             {
@@ -40,14 +43,14 @@ namespace Report
                             select result;
                 
                 var averageResult = marks.Count() != 0 ? marks.Average(x => x.Mark) : 0;
-                AverageExaminatorList.Add(new AverageExaminator
+                averageExaminatorList.Add(new AverageExaminator
                 {
                     ExaminatorName = val.Name,
                     AverageMark = averageResult
                 });
             }
 
-            return AverageExaminatorList;
+            return averageExaminatorList;
         }
     }
 }

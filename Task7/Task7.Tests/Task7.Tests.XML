@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task7.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Task7.Tests.Initialization">
+            <summary>
+            Class for generate data in database.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Initialization.InitializeTables(System.String)">
+            <summary>
+            Method for generate data in database.
+            </summary>
+            <param name="connString"></param>
+        </member>
+        <member name="T:Task7.Tests.Tests">
+            <summary>
+            Class for testing classes.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Tests.InitializationTables">
+            <summary>
+            initialize database.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Tests.TestRead">
+            <summary>
+            Method for testing read method.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Tests.TestReadAll">
+            <summary>
+            Method for testing readall method.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Tests.TestUpdate">
+            <summary>
+            Method for testing update method.
+            </summary>
+        </member>
+        <member name="M:Task7.Tests.Tests.TestDelete">
+            <summary>
+            Method for testing delete method.
+            </summary>
+        </member>
+    </members>
+</doc>

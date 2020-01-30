@@ -8,8 +8,19 @@ using System.Threading.Tasks;
 
 namespace Report
 {
+    /// <summary>
+    /// Class for write data to Excel file.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public static class ExcelWriter<T>
     {
+        /// <summary>
+        /// Method for write data to Excel file.
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <param name="fileName"></param>
+        /// <param name="header"></param>
+        /// <param name="data"></param>
         public static void WriteToExcel(string directory, string fileName, List<string> header, List<T> data)
         {
             string path = directory + fileName + ".xlsx";

@@ -19,7 +19,7 @@ CREATE TABLE `universitydb`.`groups` (
 
 CREATE TABLE `universitydb`.`subjects` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(15) NOT NULL,
+  `name` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `universitydb`.`examinators`(

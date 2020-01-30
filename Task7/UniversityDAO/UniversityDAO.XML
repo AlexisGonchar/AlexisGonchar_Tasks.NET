@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UniversityDAO</name>
+    </assembly>
+    <members>
+        <member name="T:UniversityDAO.Dao`1">
+            <summary>
+            Class for working with tables.
+            </summary>
+            <typeparam name="T">Universal parameter accepting any types.</typeparam>
+        </member>
+        <member name="M:UniversityDAO.Dao`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Dao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.ExamDao">
+            <summary>
+            Class for working with Exams table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.ExamDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ExamDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.GroupDao">
+            <summary>
+            Class for working with Groups table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.GroupDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the GroupDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.IDao`1">
+            <summary>
+            Interface defining methods for working with tables.
+            </summary>
+            <typeparam name="T">Universal parameter accepting any types.</typeparam>
+        </member>
+        <member name="M:UniversityDAO.IDao`1.Create(`0)">
+            <summary>
+            Creates record in table.
+            </summary>
+            <param name="obj">Object for recording.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityDAO.IDao`1.Update(`0,System.Int32)">
+            <summary>
+            Update record in table.
+            </summary>
+            <param name="obj">Object for updating.</param>
+            <param name="id">Id of the object to be updated.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityDAO.IDao`1.DeleteById(System.Int32)">
+            <summary>
+            Delete record in table.
+            </summary>
+            <param name="id">Id of the object to be deleted.</param>
+            <returns>true if the operation was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UniversityDAO.IDao`1.Read(System.Int32)">
+            <summary>
+            Read record in table.
+            </summary>
+            <param name="id">Id of the object to be read.</param>
+            <returns>Table entry.</returns>
+        </member>
+        <member name="M:UniversityDAO.IDao`1.ReadAll">
+            <summary>
+            Read all records in table.
+            </summary>
+            <returns>All table entry as List.</returns>
+        </member>
+        <member name="T:UniversityDAO.ResultDao">
+            <summary>
+            Class for working with Results table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.ResultDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ResultDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.StudentDao">
+            <summary>
+            Class for working with Subjects table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.StudentDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the StudentDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+        <member name="T:UniversityDAO.SubjectDao">
+            <summary>
+            Class for working with Subjects table.
+            </summary>
+        </member>
+        <member name="M:UniversityDAO.SubjectDao.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SubjectDao class.
+            </summary>
+            <param name="connString">The connection string.</param>
+        </member>
+    </members>
+</doc>
